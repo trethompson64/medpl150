@@ -1,1 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>aspiring actor</title>
+  <style>
+    :root{--bg:#0b0b10;--text:#f2f2f7;--muted:#b9b9c6;--accent:#f7c948;--border:rgba(255,255,255,.12);}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+    .card{width:min(860px,100%);background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:18px;padding:22px;}
+    h1{margin:0 0 8px;font-size:34px;}
+    p{margin:0 0 16px;color:var(--muted);font-size:17px;line-height:1.5;}
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
+    .btn{display:block;text-decoration:none;text-align:center;padding:14px 14px;border-radius:14px;font-weight:800;}
+    .btn.a{background:var(--accent);color:#0b0b10;}
+    .btn.b{border:1px solid var(--border);color:var(--text);}
+    .nav{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+    .nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:10px 12px;border-radius:12px;}
+    @media (max-width:720px){.choices{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>aspiring actor</h1>
+    <p>
+      it’s audition day. you’re tired, but the tape has to be clean.
+      lighting, framing, sound. no excuses.
+    </p>
 
+    <p><strong>choice:</strong> you have one hour before you have to switch gears for the rest of life.</p>
+
+    <div class="choices">
+      <a class="btn a" href="ending-win.html">lock in • do the tape anyway</a>
+      <a class="btn b" href="ending-pivot.html">protect peace • push it to tomorrow</a>
+    </div>
+
+    <div class="nav">
+      <a href="choose.html">choose another player</a>
+      <a href="index.html">start screen</a>
+    </div>
+  </main>
+</body>
+</html>
