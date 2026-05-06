@@ -1,1 +1,56 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>choose your player</title>
+  <style>
+    :root{--bg:#0b0b10;--panel:#151521;--text:#f2f2f7;--muted:#b9b9c6;--accent:#f7c948;--border:rgba(255,255,255,.12);}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+    .wrap{width:min(980px,100%);}
+    h1{margin:0 0 10px;font-size:40px;}
+    p{margin:0 0 18px;color:var(--muted);font-size:17px;line-height:1.45;}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .card{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:16px;padding:16px;}
+    .card h2{margin:0 0 6px;font-size:20px;}
+    .meta{color:var(--muted);font-size:14px;line-height:1.35;margin-bottom:10px;}
+    .btn{display:block;text-decoration:none;color:var(--bg);background:var(--accent);padding:12px 14px;border-radius:12px;font-weight:800;text-align:center;}
+    .nav{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+    .nav a{color:var(--text);text-decoration:none;border:1px solid var(--border);padding:10px 12px;border-radius:12px;}
+    @media (max-width:900px){.cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>choose your player</h1>
+    <p>pick a role. same person, different pressure.</p>
+
+    <section class="cards">
+      <article class="card">
+        <h2>aspiring actor</h2>
+        <div class="meta">auditions, self tapes, rejection armor, delusional confidence.</div>
+        <a class="btn" href="actor.html">select</a>
+      </article>
+
+      <article class="card">
+        <h2>seasoned dancer & aerialist</h2>
+        <div class="meta">discipline, body maintenance, rehearsal brain, performance instincts.</div>
+        <a class="btn" href="dancer.html">select</a>
+      </article>
+
+      <article class="card">
+        <h2>new dj</h2>
+        <div class="meta">crate building, nerves, transitions, reading the room in real time.</div>
+        <a class="btn" href="dj.html">select</a>
+      </article>
+    </section>
+
+    <div class="nav">
+      <a href="index.html">back</a>
+      <a href="../index.html">back to site</a>
+    </div>
+  </main>
+</body>
+</html>
