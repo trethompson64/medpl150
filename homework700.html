@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Choose Your Player</title>
+  <style>
+    :root{
+      --bg:#0b0b10;
+      --text:#f2f2f7;
+      --muted:#b9b9c6;
+      --accent:#f7c948;
+      --border:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1000px 700px at 20% 10%, rgba(247,201,72,.18), transparent 60%),
+                 radial-gradient(900px 600px at 80% 30%, rgba(255,255,255,.06), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      width:min(900px,100%);
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      padding:26px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      margin-bottom:14px;
+    }
+    h1{margin:0 0 8px;font-size:42px;line-height:1.05;}
+    p{margin:0 0 14px;color:var(--muted);font-size:16px;line-height:1.55;}
+    hr{border:none;border-top:1px solid var(--border);margin:18px 0;}
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      background:var(--accent);
+      color:var(--bg);
+      padding:14px 18px;
+      border-radius:14px;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .map{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      font-size:13px;
+      color:var(--muted);
+      background:rgba(0,0,0,.25);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:14px;
+      overflow:auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="tag">Week 10 • Interactive Story Part 1</div>
+    <h1>Choose Your Player: Tre Tonight</h1>
+
+    <p><strong>Premise:</strong> A choose your own path night following different versions of me: Aspiring Actor, Seasoned Dancer &amp; Aerialist, and New DJ. You pick a role, make a decision under pressure, and land in one of two endings: Win or Pivot.</p>
+    <p><strong>Setting:</strong> One night timeline.</p>
+    <p><strong>Characters:</strong> Me, split into three playable roles.</p>
+    <p><strong>Choices:</strong> Each role can reach either ending, so replaying changes the route but keeps the world consistent.</p>
+
+    <hr />
+
+    <div class="map">
+Splash Page → /interactivestory/<br/>
+/interactivestory/ → Choose<br/>
+Choose → Actor | Dancer &amp; Aerialist | DJ<br/>
+Each Role → Option A (Win) | Option B (Pivot)<br/>
+Win → Play Again → Choose<br/>
+Pivot → Try Again → Choose
+    </div>
+
+    <hr />
+
+    <a class="btn" href="interactivestory/">Enter</a>
+  </main>
+</body>
+</html>
