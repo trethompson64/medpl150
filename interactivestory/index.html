@@ -1,1 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>choose your player: tre tonight</title>
+  <style>
+    :root{
+      --bg:#0b0b10;
+      --panel:#151521;
+      --text:#f2f2f7;
+      --muted:#b9b9c6;
+      --accent:#f7c948;
+      --accent2:#7bdff2;
+      --border:rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:radial-gradient(1200px 700px at 20% 10%, rgba(123,223,242,.18), transparent 60%),
+                 radial-gradient(900px 600px at 80% 20%, rgba(247,201,72,.18), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+    }
+    .card{
+      width:min(860px,100%);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 20px 60px rgba(0,0,0,.45);
+    }
+    .tag{
+      display:inline-block;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:44px;
+      line-height:1.05;
+    }
+    p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.5;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--bg);
+      background:var(--accent);
+      padding:14px 16px;
+      border-radius:14px;
+      font-weight:700;
+      text-align:center;
+      border:1px solid rgba(0,0,0,.2);
+    }
+    .btn.secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid var(--border);
+    }
+    .small{
+      font-size:14px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .two{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:10px;
+    }
+    @media (max-width:640px){
+      h1{font-size:34px}
+      .two{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="tag">interactive story • week 10</div>
+    <h1>choose your player: tre tonight</h1>
+    <p>
+      you are picking which version of me you’re following for the night.
+      every choice has consequences. sometimes you win. sometimes you pivot.
+    </p>
 
+    <div class="grid">
+      <a class="btn" href="choose.html">press start</a>
+      <div class="two">
+        <a class="btn secondary" href="choose.html">skip intro</a>
+        <a class="btn secondary" href="../index.html">back to site</a>
+      </div>
+      <div class="small">
+        note: images are optional tonight. if you add them later, drop them in <strong>assets/</strong> and update the image src lines.
+      </div>
+    </div>
+  </main>
+</body>
+</html>
