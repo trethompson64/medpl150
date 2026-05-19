@@ -683,21 +683,21 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     <div class="role-strip-item" onclick="showRole('actor')">
       <span class="strip-icon">🎭</span>
       <span class="strip-text">
-        <span class="name">Aspiring Actor</span>
+        <span class="name">Tre Wright</span>
         <span class="sub">Auditions · Self tapes</span>
       </span>
     </div>
     <div class="role-strip-item" onclick="showRole('dancer')">
       <span class="strip-icon">🩰</span>
       <span class="strip-text">
-        <span class="name">Dancer & Aerialist</span>
+        <span class="name">TARZAN</span>
         <span class="sub">Training · Performance</span>
       </span>
     </div>
     <div class="role-strip-item" onclick="showRole('dj')">
       <span class="strip-icon">🎧</span>
       <span class="strip-text">
-        <span class="name">New DJ</span>
+        <span class="name">DJ TARZAN</span>
         <span class="sub">Sets · Crowd energy</span>
       </span>
     </div>
@@ -721,7 +721,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     <div class="pcard actor">
       <div class="pcard-img" style="background-image:url('assets/actor.png')"></div>
       <div class="pcard-body">
-        <div class="pcard-name">Aspiring Actor</div>
+        <div class="pcard-name">Tre Wright</div>
         <div class="pcard-desc">Auditions, self tapes, last minute calls, and chasing the breakthrough.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Creativity</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
@@ -737,7 +737,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     <div class="pcard dancer">
       <div class="pcard-img" style="background-image:url('assets/dancer-pole.png')"></div>
       <div class="pcard-body">
-        <div class="pcard-name">Dancer & Aerialist</div>
+        <div class="pcard-name">TARZAN</div>
         <div class="pcard-desc">Training, rehearsal, performance, and pushing the limits.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Strength</span>  <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
@@ -753,7 +753,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     <div class="pcard dj">
       <div class="pcard-img" style="background-image:url('assets/dj.png')"></div>
       <div class="pcard-body">
-        <div class="pcard-name">New DJ</div>
+        <div class="pcard-name">DJ TARZAN</div>
         <div class="pcard-desc">Sets, soundchecks, crowd energy, and finding your sound.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Rhythm</span>      <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div></div>
@@ -875,7 +875,7 @@ const ROLES = {
     mode:  'actor-mode',
     img:   'assets/actor.png',
     eye:   'Aspiring Actor',
-    title: 'Aspiring Actor',
+    title: 'Tre Wright',
     stats: [
       { lbl:'Creativity', w:'88%' },
       { lbl:'Confidence', w:'62%' },
@@ -889,12 +889,12 @@ const ROLES = {
     ],
     win: {
       img:  'assets/ending-win-actor.png',
-      tag:  'Aspiring Actor · Ending A',
+      tag:  'Tre Wright · Ending A',
       body: `You got the callback.\nYou're doing the most embarrassing happy dance in the parking lot right now.\nOne leg up. Fist pumping. Eyes squeezed shut.\nNobody is watching but you would not stop even if they were.\n\nThis is the one.`
     },
     pivot: {
       img:  'assets/ending-pivot-actor.png',
-      tag:  'Aspiring Actor · Ending B',
+      tag:  'Tre Wright · Ending B',
       body: `You are face-down on the floor.\nSurrounded by printed sides and a cold coffee.\nOne arm reaching toward nothing in particular.\n\nThe reel is going to be incredible though.`
     }
   },
@@ -902,7 +902,7 @@ const ROLES = {
     mode:  'dancer-mode',
     img:   'assets/dancer-pole.png',
     eye:   'Dancer & Aerialist',
-    title: 'Dancer & Aerialist',
+    title: 'TARZAN',
     stats: [
       { lbl:'Strength', w:'92%' },
       { lbl:'Stamina',  w:'78%' },
@@ -916,12 +916,12 @@ const ROLES = {
     ],
     win: {
       img:  'assets/ending-win-dancer.png',
-      tag:  'Dancer & Aerialist · Ending A',
+      tag:  'TARZAN · Ending A',
       body: `You took the bow like you've been doing this for 30 years.\nBlew a kiss to the crowd.\nCompletely unbothered.\n\nYou were tired. You were underpaid.\nYou were also the best thing that happened in that venue tonight.\nAnd you knew it.`
     },
     pivot: {
       img:  'assets/ending-pivot-dancer.png',
-      tag:  'Dancer & Aerialist · Ending B',
+      tag:  'TARZAN · Ending B',
       body: `Ice pack duct-taped to your shoulder.\nSnack in hand.\nSomething random playing on your phone.\n\nYou protected your body, created some content,\nand honestly? This is a perfectly good Tuesday.\nNo notes.`
     }
   },
@@ -929,7 +929,7 @@ const ROLES = {
     mode:  'dj-mode',
     img:   'assets/dj.png',
     eye:   'New DJ',
-    title: 'New DJ',
+    title: 'DJ TARZAN',
     stats: [
       { lbl:'Rhythm',       w:'80%' },
       { lbl:'Confidence',   w:'48%' },
@@ -943,12 +943,12 @@ const ROLES = {
     ],
     win: {
       img:  'assets/ending-win-dj.png',
-      tag:  'New DJ · Ending A',
+      tag:  'DJ TARZAN · Ending A',
       body: `The crowd went absolutely feral.\nYou have one eyebrow raised.\nYou are calm in the chaos.\n\nYou knew this would happen.\n(You did not know this would happen.\nBut you will never admit that.)`
     },
     pivot: {
       img:  'assets/ending-pivot-dj.png',
-      tag:  'New DJ · Ending B',
+      tag:  'DJ TARZAN · Ending B',
       body: `The set was mid. The crowd was small.\nBut you left with three new numbers and two collabs in the works.\n\nYou are grinning like this was the plan all along.\nIt was not the plan.\nBut here you are.`
     }
   }
