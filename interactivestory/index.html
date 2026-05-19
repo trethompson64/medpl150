@@ -1,121 +1,925 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>choose your player: tre tonight</title>
-  <style>
-    :root{
-      --bg:#0b0b10;
-      --panel:#151521;
-      --text:#f2f2f7;
-      --muted:#b9b9c6;
-      --accent:#f7c948;
-      --accent2:#7bdff2;
-      --border:rgba(255,255,255,.12);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:radial-gradient(1200px 700px at 20% 10%, rgba(123,223,242,.18), transparent 60%),
-                 radial-gradient(900px 600px at 80% 20%, rgba(247,201,72,.18), transparent 60%),
-                 var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
-    .card{
-      width:min(860px,100%);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
-    }
-    .tag{
-      display:inline-block;
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      color:var(--muted);
-      border:1px solid var(--border);
-      padding:8px 10px;
-      border-radius:999px;
-      margin-bottom:14px;
-    }
-    h1{
-      margin:0 0 10px;
-      font-size:44px;
-      line-height:1.05;
-    }
-    p{
-      margin:0 0 14px;
-      color:var(--muted);
-      font-size:18px;
-      line-height:1.5;
-    }
-    .grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      margin-top:16px;
-    }
-    .btn{
-      display:inline-block;
-      text-decoration:none;
-      color:var(--bg);
-      background:var(--accent);
-      padding:14px 16px;
-      border-radius:14px;
-      font-weight:700;
-      text-align:center;
-      border:1px solid rgba(0,0,0,.2);
-    }
-    .btn.secondary{
-      background:transparent;
-      color:var(--text);
-      border:1px solid var(--border);
-    }
-    .small{
-      font-size:14px;
-      color:var(--muted);
-      margin-top:10px;
-    }
-    .two{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:12px;
-      margin-top:10px;
-    }
-    @media (max-width:640px){
-      h1{font-size:34px}
-      .two{grid-template-columns:1fr}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Player: Tre Tonight</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────── */
+:root {
+  --bg:     #04040a;
+  --bg2:    #08080f;
+  --purple: #9333ea;
+  --violet: #b44fff;
+  --teal:   #00e5c8;
+  --gold:   #f0c040;
+  --text:   #eeeef5;
+  --muted:  #6b6b8a;
+  --card:   #0c0c18;
+  --border: #1a1a2e;
+}
+
+/* ─── RESET ──────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+/* ─── SCREEN SYSTEM ──────────────────────────── */
+.screen { display: none; min-height: 100vh; flex-direction: column; }
+.screen.active { display: flex; animation: fadeUp 0.45s ease both; }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ════════════════════════════════════════════════
+   SCREEN 1 — START
+════════════════════════════════════════════════ */
+#screen-start {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  align-items: flex-start;
+}
+
+/* Slideshow */
+.hero-slides {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.hero-slide.active { opacity: 1; }
+
+/* Dark overlays so text pops */
+.hero-slide::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(4,4,10,0.92) 0%,
+    rgba(4,4,10,0.75) 45%,
+    rgba(4,4,10,0.25) 100%
+  );
+}
+
+/* Grid texture */
+.start-grid {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(147,51,234,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147,51,234,0.06) 1px, transparent 1px);
+  background-size: 55px 55px;
+}
+
+/* Slide indicators */
+.slide-dots {
+  position: absolute;
+  bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex; gap: 8px;
+}
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  transition: all 0.3s;
+}
+.dot.active {
+  background: var(--violet);
+  box-shadow: 0 0 8px var(--violet);
+  width: 20px;
+  border-radius: 3px;
+}
+
+/* Corner badge */
+.start-badge {
+  position: absolute;
+  top: 28px; right: 32px;
+  z-index: 3;
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--muted);
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--teal);
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.3; }
+}
+
+/* Main content */
+.start-content {
+  position: relative; z-index: 2;
+  padding: clamp(48px,8vh,100px) clamp(28px,6vw,80px);
+  max-width: 560px;
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.start-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--teal);
+  border: 1px solid rgba(0,229,200,0.3);
+  display: inline-block;
+  padding: 4px 12px;
+  margin-bottom: 22px;
+}
+
+.start-title {
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 0.88;
+  margin-bottom: 8px;
+}
+.start-title .t1 { display: block; font-size: clamp(72px,11vw,110px); color: var(--text); }
+.start-title .t2 { display: block; font-size: clamp(72px,11vw,110px); color: var(--violet); }
+.start-title .t3 { display: block; font-size: clamp(72px,11vw,110px); color: var(--text); }
+.start-title .t4 {
+  display: block;
+  font-size: clamp(28px,4.5vw,46px);
+  color: var(--teal);
+  font-style: italic;
+  margin-top: 6px;
+  letter-spacing: 2px;
+}
+
+.start-sub {
+  font-size: 14px; font-weight: 300;
+  line-height: 1.7;
+  color: rgba(238,238,245,0.6);
+  margin: 20px 0 36px;
+  max-width: 300px;
+}
+
+.btn-enter {
+  display: inline-flex; align-items: center; gap: 14px;
+  border: 2px solid var(--violet);
+  color: var(--text);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 5px;
+  padding: 15px 38px;
+  transition: all 0.25s;
+  box-shadow: 0 0 24px rgba(180,79,255,0.25), inset 0 0 20px rgba(180,79,255,0.04);
+  width: fit-content;
+}
+.btn-enter:hover {
+  background: rgba(180,79,255,0.12);
+  box-shadow: 0 0 48px rgba(180,79,255,0.55), inset 0 0 30px rgba(180,79,255,0.1);
+  transform: translateY(-2px);
+}
+.btn-enter .arr { color: var(--violet); }
+
+/* Role preview strip at bottom */
+.role-strip {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  border-top: 1px solid var(--border);
+}
+.role-strip-item {
+  flex: 1;
+  padding: 16px 20px;
+  display: flex; align-items: center; gap: 10px;
+  border-right: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.2s;
+  background: rgba(4,4,10,0.85);
+}
+.role-strip-item:last-child { border-right: none; }
+.role-strip-item:hover { background: rgba(255,255,255,0.04); }
+.strip-icon { font-size: 20px; }
+.strip-text { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; }
+.strip-text .name { display: block; font-weight: 700; }
+.strip-text .sub { display: block; color: var(--muted); font-size: 10px; margin-top: 1px; }
+
+/* ════════════════════════════════════════════════
+   SCREEN 2 — PLAYER SELECT
+════════════════════════════════════════════════ */
+#screen-select {
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 0%, rgba(90,15,140,0.35) 0%, transparent 65%),
+    var(--bg);
+  padding: 56px 40px 60px;
+  align-items: center;
+  gap: 36px;
+}
+
+.sel-header { text-align: center; }
+.sel-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(38px,6vw,64px);
+  letter-spacing: 5px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.sel-header h2 .star { color: var(--violet); font-size: 0.55em; }
+.sel-header p {
+  font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--muted); margin-top: 8px;
+}
+
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  width: 100%; max-width: 1020px;
+}
+@media(max-width:680px){ .cards-row{ grid-template-columns:1fr; } }
+
+.pcard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.pcard::before {
+  content:''; position: absolute; top:0; left:0; right:0; height:2px;
+}
+.pcard.actor::before  { background: var(--violet); }
+.pcard.dancer::before { background: var(--gold); }
+.pcard.dj::before     { background: var(--teal); }
+
+.pcard:hover { transform: translateY(-5px); }
+.pcard.actor:hover  { box-shadow: 0 16px 48px rgba(180,79,255,0.22); }
+.pcard.dancer:hover { box-shadow: 0 16px 48px rgba(240,192,64,0.18); }
+.pcard.dj:hover     { box-shadow: 0 16px 48px rgba(0,229,200,0.18); }
+
+/* Image area */
+.pcard-img {
+  width: 100%; aspect-ratio: 3/4;
+  background-size: cover;
+  background-position: center top;
+  position: relative;
+}
+.pcard-img::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:60%;
+  background: linear-gradient(to top, var(--card) 0%, transparent 100%);
+}
+
+/* Card body */
+.pcard-body {
+  padding: 16px 18px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+
+.pcard-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 3px;
+}
+.pcard.actor  .pcard-name { color: var(--violet); }
+.pcard.dancer .pcard-name { color: var(--gold); }
+.pcard.dj     .pcard-name { color: var(--teal); }
+
+.pcard-desc {
+  font-size: 11px; color: var(--muted); line-height: 1.5;
+}
+
+.stat-rows { display: flex; flex-direction: column; gap: 5px; }
+.stat-row  { display: flex; align-items: center; gap: 8px; }
+.stat-lbl  {
+  font-size: 9px; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--muted);
+  width: 88px; flex-shrink: 0;
+}
+.stat-bar  {
+  flex:1; height: 3px;
+  background: rgba(255,255,255,0.07); border-radius: 2px; overflow:hidden;
+}
+.stat-fill { height:100%; border-radius:2px; }
+.pcard.actor  .stat-fill { background: var(--violet); }
+.pcard.dancer .stat-fill { background: var(--gold); }
+.pcard.dj     .stat-fill { background: var(--teal); }
+
+.btn-sel {
+  width:100%; padding: 11px;
+  border: 1.5px solid;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 15px; letter-spacing: 3px;
+  transition: background 0.2s;
+  color: var(--text);
+  margin-top: 4px;
+}
+.pcard.actor  .btn-sel { border-color: var(--violet); }
+.pcard.dancer .btn-sel { border-color: var(--gold);   }
+.pcard.dj     .btn-sel { border-color: var(--teal);   }
+.pcard.actor  .btn-sel:hover { background: rgba(180,79,255,0.14); }
+.pcard.dancer .btn-sel:hover { background: rgba(240,192,64,0.14); }
+.pcard.dj     .btn-sel:hover { background: rgba(0,229,200,0.14);  }
+
+.sel-tip {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+  border-top: 1px solid var(--border); padding-top: 16px;
+  max-width: 1020px; width: 100%; text-align: center;
+}
+
+/* ════════════════════════════════════════════════
+   SCREEN 3 — ROLE PAGE  (split layout)
+════════════════════════════════════════════════ */
+#screen-role {
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* IMAGE HALF */
+.role-img-half {
+  width: 42%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.role-img-half .bg-img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center top;
+}
+.role-img-half .bg-img::after {
+  content:'';
+  position:absolute; inset:0;
+  background: linear-gradient(to right, transparent 60%, var(--bg) 100%);
+}
+
+/* COLOR accent bar on edge */
+.role-img-half::before {
+  content:'';
+  position:absolute; top:0; left:0; bottom:0; width:3px;
+  z-index:2;
+}
+#screen-role.actor-mode  .role-img-half::before { background: var(--violet); }
+#screen-role.dancer-mode .role-img-half::before { background: var(--gold);   }
+#screen-role.dj-mode     .role-img-half::before { background: var(--teal);   }
+
+@media(max-width:700px){
+  #screen-role { flex-direction: column; }
+  .role-img-half { width:100%; height:300px; flex-shrink:0; }
+  .role-img-half .bg-img::after {
+    background: linear-gradient(to top, var(--bg) 0%, transparent 60%);
+  }
+}
+
+/* TEXT HALF */
+.role-text-half {
+  flex: 1;
+  padding: clamp(28px,5vh,60px) clamp(24px,4vw,56px);
+  display: flex; flex-direction: column;
+  justify-content: center;
+  background: var(--bg);
+  position: relative;
+  overflow-y: auto;
+}
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--muted);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 28px;
+  transition: color 0.2s;
+}
+.back-btn:hover { color: var(--text); }
+
+.role-eyebrow {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+#screen-role.actor-mode  .role-eyebrow { color: var(--violet); }
+#screen-role.dancer-mode .role-eyebrow { color: var(--gold);   }
+#screen-role.dj-mode     .role-eyebrow { color: var(--teal);   }
+
+.role-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px,6vw,64px);
+  letter-spacing: 3px; line-height: 1;
+  margin-bottom: 20px;
+}
+#screen-role.actor-mode  .role-title { color: var(--violet); }
+#screen-role.dancer-mode .role-title { color: var(--gold);   }
+#screen-role.dj-mode     .role-title { color: var(--teal);   }
+
+/* mini stats */
+.mini-stats {
+  display: flex; flex-wrap: wrap; gap: 10px 20px;
+  margin-bottom: 24px;
+}
+.mini-stat {
+  display: flex; align-items: center; gap: 8px;
+}
+.mini-stat .lbl {
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted); font-weight: 600; width: 80px;
+}
+.mini-stat .bar {
+  width: 80px; height: 3px;
+  background: rgba(255,255,255,0.07); border-radius: 2px; overflow:hidden;
+}
+.mini-stat .fill { height:100%; border-radius:2px; }
+#screen-role.actor-mode  .mini-stat .fill { background: var(--violet); }
+#screen-role.dancer-mode .mini-stat .fill { background: var(--gold);   }
+#screen-role.dj-mode     .mini-stat .fill { background: var(--teal);   }
+
+.scene-box {
+  border-left: 2px solid;
+  padding: 16px 20px;
+  font-size: 13px; line-height: 1.75;
+  color: rgba(238,238,245,0.78);
+  background: rgba(255,255,255,0.025);
+  margin-bottom: 28px;
+}
+#screen-role.actor-mode  .scene-box { border-left-color: var(--violet); }
+#screen-role.dancer-mode .scene-box { border-left-color: var(--gold);   }
+#screen-role.dj-mode     .scene-box { border-left-color: var(--teal);   }
+
+.choice-head {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+#screen-role.actor-mode  .choice-head { color: var(--violet); }
+#screen-role.dancer-mode .choice-head { color: var(--gold);   }
+#screen-role.dj-mode     .choice-head { color: var(--teal);   }
+
+.choices { display: flex; flex-direction: column; gap: 10px; }
+
+.choice-btn {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 16px 18px;
+  text-align: left; color: var(--text);
+  transition: all 0.2s;
+}
+.choice-btn:hover {
+  transform: translateX(5px);
+  background: rgba(255,255,255,0.04);
+}
+#screen-role.actor-mode  .choice-btn:hover { border-color: rgba(180,79,255,0.45); }
+#screen-role.dancer-mode .choice-btn:hover { border-color: rgba(240,192,64,0.45); }
+#screen-role.dj-mode     .choice-btn:hover { border-color: rgba(0,229,200,0.45);  }
+
+.ch-letter {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px; width: 28px; flex-shrink:0;
+}
+#screen-role.actor-mode  .ch-letter { color: var(--violet); }
+#screen-role.dancer-mode .ch-letter { color: var(--gold);   }
+#screen-role.dj-mode     .ch-letter { color: var(--teal);   }
+
+.ch-text { flex:1; font-size: 13px; line-height: 1.5; }
+.ch-arrow { color: var(--muted); transition: transform 0.2s; }
+.choice-btn:hover .ch-arrow { transform: translateX(4px); color: var(--text); }
+
+.goes-row {
+  display: flex; gap: 24px;
+  margin-top: 24px; padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+.goes-item { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.goes-item span { display: block; font-weight: 700; font-size: 11px; margin-top: 3px; }
+.win-tag   { color: var(--teal); }
+.pivot-tag { color: var(--gold); }
+
+/* ════════════════════════════════════════════════
+   SCREEN 4A — WIN
+════════════════════════════════════════════════ */
+#screen-win {
+  position: relative; overflow: hidden;
+  justify-content: center; align-items: center; text-align: center;
+}
+.win-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 85%, rgba(0,229,200,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 40% at 20% 20%, rgba(90,15,140,0.25) 0%, transparent 60%),
+    var(--bg);
+}
+.win-bg::before {
+  content:''; position:absolute; inset:0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,229,200,0.012) 3px, rgba(0,229,200,0.012) 4px);
+}
+
+/* ════════════════════════════════════════════════
+   SCREEN 4B — PIVOT
+════════════════════════════════════════════════ */
+#screen-pivot {
+  position: relative; overflow: hidden;
+  justify-content: center; align-items: center; text-align: center;
+}
+.pivot-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 55% 60% at 80% 60%, rgba(240,192,64,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 40% at 20% 30%, rgba(90,15,140,0.22) 0%, transparent 55%),
+    var(--bg);
+}
+.pivot-watermark {
+  position:absolute; bottom:48px; right:52px;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:72px; line-height:0.88; letter-spacing:6px;
+  color:var(--gold); opacity:0.06;
+  pointer-events:none;
+}
+
+/* ── Shared ending styles ── */
+.ending-wrap {
+  position:relative; z-index:2;
+  max-width:560px; padding:60px 40px;
+  display:flex; flex-direction:column; align-items:center; gap:18px;
+}
+
+.ending-icon { font-size:60px; line-height:1; }
+
+.ending-title {
+  font-family:'Bebas Neue', sans-serif;
+  font-size: clamp(70px,13vw,108px);
+  letter-spacing:5px; line-height:0.88;
+}
+#screen-win   .ending-title { color: var(--teal);  text-shadow: 0 0 40px rgba(0,229,200,0.4); }
+#screen-pivot .ending-title { color: var(--gold);  text-shadow: 0 0 40px rgba(240,192,64,0.3); }
+
+.ending-body {
+  font-size:15px; line-height:1.85;
+  color:rgba(238,238,245,0.7);
+  max-width:360px;
+}
+
+.ending-btns {
+  display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:8px;
+}
+.btn-e {
+  padding:12px 28px;
+  border:2px solid;
+  font-family:'Bebas Neue', sans-serif;
+  font-size:16px; letter-spacing:3px;
+  transition: all 0.2s; color: var(--text);
+}
+#screen-win   .btn-again { border-color: var(--teal); color: var(--teal); }
+#screen-win   .btn-again:hover { background: rgba(0,229,200,0.12); }
+#screen-pivot .btn-again { border-color: var(--gold); color: var(--gold); }
+#screen-pivot .btn-again:hover { background: rgba(240,192,64,0.12); }
+.btn-home { border-color: rgba(255,255,255,0.2); color:rgba(238,238,245,0.55); }
+.btn-home:hover { border-color:rgba(255,255,255,0.45); color:var(--text); }
+
+/* ─── SCROLLBAR ──────────────────────────────── */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--purple); border-radius:2px; }
+</style>
 </head>
 <body>
-  <main class="card">
-    <div class="tag">interactive story • week 10</div>
-    <h1>choose your player: tre tonight</h1>
-    <p>
-      you are picking which version of me you’re following for the night.
-      every choice has consequences. sometimes you win. sometimes you pivot.
-    </p>
 
-    <div class="grid">
-      <a class="btn" href="choose.html">press start</a>
-      <div class="two">
-        <a class="btn secondary" href="choose.html">skip intro</a>
-        <a class="btn secondary" href="../index.html">back to site</a>
-      </div>
-      <div class="small">
-        note: images are optional tonight. if you add them later, drop them in <strong>assets/</strong> and update the image src lines.
+<!-- ══════════════════════════════════════════
+     SCREEN 1 — START
+══════════════════════════════════════════ -->
+<section id="screen-start" class="screen active">
+
+  <!-- Rotating hero images -->
+  <div class="hero-slides">
+    <div class="hero-slide active"     style="background-image:url('assets/actor.png')"></div>
+    <div class="hero-slide"            style="background-image:url('assets/dancer-pole.png')"></div>
+    <div class="hero-slide"            style="background-image:url('assets/dancer-air.png')"></div>
+    <div class="hero-slide"            style="background-image:url('assets/dj.png')"></div>
+  </div>
+
+  <div class="start-grid"></div>
+
+  <div class="start-badge">
+    Interactive Story · MEDPL 150 <span class="live-dot"></span>
+  </div>
+
+  <div class="start-content">
+    <span class="start-eyebrow">Interactive Story · Week 10</span>
+    <h1 class="start-title">
+      <span class="t1">CHOOSE</span>
+      <span class="t2">YOUR</span>
+      <span class="t3">PLAYER</span>
+      <span class="t4">Tre Tonight</span>
+    </h1>
+    <p class="start-sub">One person. Four roles.<br>Every choice changes the night.</p>
+    <button class="btn-enter" onclick="showScreen('screen-select')">
+      <span class="arr">»</span> ENTER <span class="arr">«</span>
+    </button>
+  </div>
+
+  <!-- Slide dots -->
+  <div class="slide-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+
+  <!-- Bottom role strip -->
+  <div class="role-strip">
+    <div class="role-strip-item" onclick="showRole('actor')">
+      <span class="strip-icon">🎭</span>
+      <span class="strip-text">
+        <span class="name">Aspiring Actor</span>
+        <span class="sub">Auditions · Self tapes</span>
+      </span>
+    </div>
+    <div class="role-strip-item" onclick="showRole('dancer')">
+      <span class="strip-icon">🩰</span>
+      <span class="strip-text">
+        <span class="name">Dancer & Aerialist</span>
+        <span class="sub">Training · Performance</span>
+      </span>
+    </div>
+    <div class="role-strip-item" onclick="showRole('dj')">
+      <span class="strip-icon">🎧</span>
+      <span class="strip-text">
+        <span class="name">New DJ</span>
+        <span class="sub">Sets · Crowd energy</span>
+      </span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 2 — CHOOSE YOUR PLAYER
+══════════════════════════════════════════ -->
+<section id="screen-select" class="screen">
+
+  <div class="sel-header">
+    <h2><span class="star">✦</span> CHOOSE YOUR PLAYER <span class="star">✦</span></h2>
+    <p>Pick a version of me. Make a choice. Live with it.</p>
+  </div>
+
+  <div class="cards-row">
+
+    <!-- ACTOR -->
+    <div class="pcard actor">
+      <div class="pcard-img" style="background-image:url('assets/actor.png')"></div>
+      <div class="pcard-body">
+        <div class="pcard-name">Aspiring Actor</div>
+        <div class="pcard-desc">Auditions, self tapes, last minute calls, and chasing the breakthrough.</div>
+        <div class="stat-rows">
+          <div class="stat-row"><span class="stat-lbl">Creativity</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Confidence</span><div class="stat-bar"><div class="stat-fill" style="width:62%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Energy</span>    <div class="stat-bar"><div class="stat-fill" style="width:45%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Time</span>      <div class="stat-bar"><div class="stat-fill" style="width:30%"></div></div></div>
+        </div>
+        <button class="btn-sel" onclick="showRole('actor')">SELECT</button>
       </div>
     </div>
-  </main>
+
+    <!-- DANCER -->
+    <div class="pcard dancer">
+      <div class="pcard-img" style="background-image:url('assets/dancer-pole.png')"></div>
+      <div class="pcard-body">
+        <div class="pcard-name">Dancer & Aerialist</div>
+        <div class="pcard-desc">Training, rehearsal, performance, and pushing the limits.</div>
+        <div class="stat-rows">
+          <div class="stat-row"><span class="stat-lbl">Strength</span>  <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Stamina</span>   <div class="stat-bar"><div class="stat-fill" style="width:78%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Focus</span>     <div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Time</span>      <div class="stat-bar"><div class="stat-fill" style="width:50%"></div></div></div>
+        </div>
+        <button class="btn-sel" onclick="showRole('dancer')">SELECT</button>
+      </div>
+    </div>
+
+    <!-- DJ -->
+    <div class="pcard dj">
+      <div class="pcard-img" style="background-image:url('assets/dj.png')"></div>
+      <div class="pcard-body">
+        <div class="pcard-name">New DJ</div>
+        <div class="pcard-desc">Sets, soundchecks, crowd energy, and finding your sound.</div>
+        <div class="stat-rows">
+          <div class="stat-row"><span class="stat-lbl">Rhythm</span>      <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Confidence</span>  <div class="stat-bar"><div class="stat-fill" style="width:48%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Adaptability</span><div class="stat-bar"><div class="stat-fill" style="width:74%"></div></div></div>
+          <div class="stat-row"><span class="stat-lbl">Time</span>        <div class="stat-bar"><div class="stat-fill" style="width:40%"></div></div></div>
+        </div>
+        <button class="btn-sel" onclick="showRole('dj')">SELECT</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sel-tip">tip: your choices can lead anywhere.</div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 3 — ROLE PAGE
+══════════════════════════════════════════ -->
+<section id="screen-role" class="screen">
+
+  <!-- LEFT: image -->
+  <div class="role-img-half">
+    <div class="bg-img" id="role-img"></div>
+  </div>
+
+  <!-- RIGHT: story -->
+  <div class="role-text-half">
+    <button class="back-btn" onclick="showScreen('screen-select')">← back</button>
+
+    <div class="role-eyebrow" id="role-eyebrow"></div>
+    <h2 class="role-title" id="role-title"></h2>
+
+    <div class="mini-stats" id="role-stats"></div>
+
+    <div class="scene-box" id="role-scene"></div>
+
+    <div class="choice-head">What do you do?</div>
+    <div class="choices" id="role-choices"></div>
+
+    <div class="goes-row">
+      <div class="goes-item">→ goes to:<span class="win-tag">Ending: Win</span></div>
+      <div class="goes-item">→ goes to:<span class="pivot-tag">Ending: Pivot</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 4A — WIN
+══════════════════════════════════════════ -->
+<section id="screen-win" class="screen">
+  <div class="win-bg"></div>
+  <div class="ending-wrap">
+    <div class="ending-icon">👑</div>
+    <h2 class="ending-title">YOU WIN.</h2>
+    <p class="ending-body">
+      Tonight went your way.<br>
+      You made the call,<br>
+      you took the risk,<br>
+      and it paid off.<br><br>
+      This is momentum.
+    </p>
+    <div class="ending-btns">
+      <button class="btn-e btn-again" onclick="showScreen('screen-select')">Play Again</button>
+      <a href="../index.html"><button class="btn-e btn-home">Exit to Home</button></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SCREEN 4B — PIVOT
+══════════════════════════════════════════ -->
+<section id="screen-pivot" class="screen">
+  <div class="pivot-bg"></div>
+  <div class="pivot-watermark">NEW<br>ROUTE</div>
+  <div class="ending-wrap">
+    <div class="ending-icon">↗️</div>
+    <h2 class="ending-title">YOU PIVOT.</h2>
+    <p class="ending-body">
+      It didn't go as planned,<br>
+      but you adapted.<br>
+      New direction.<br>
+      New opportunity.<br><br>
+      That's still a win.
+    </p>
+    <div class="ending-btns">
+      <button class="btn-e btn-again" onclick="showScreen('screen-select')">Play Again</button>
+      <a href="../index.html"><button class="btn-e btn-home">Exit to Home</button></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+/* ── Role data ─────────────────────────────── */
+const ROLES = {
+  actor: {
+    mode:  'actor-mode',
+    img:   'assets/actor.png',
+    eye:   'Aspiring Actor',
+    title: 'Aspiring Actor',
+    stats: [
+      { lbl:'Creativity', w:'88%' },
+      { lbl:'Confidence', w:'62%' },
+      { lbl:'Energy',     w:'45%' },
+      { lbl:'Time',       w:'30%' },
+    ],
+    scene: `You just got a last minute audition tomorrow. You're exhausted, your self tape is still not right, and your confidence is shaky. The callback window is tight. This is the one you've been grinding toward.`,
+    choices: [
+      { letter:'A', text:'Lock in and go for the audition. Push through the fear.',              end:'win'   },
+      { letter:'B', text:'Skip the audition and focus on building your reel tonight.',           end:'pivot' },
+    ]
+  },
+  dancer: {
+    mode:  'dancer-mode',
+    img:   'assets/dancer-pole.png',
+    eye:   'Dancer & Aerialist',
+    title: 'Dancer & Aerialist',
+    stats: [
+      { lbl:'Strength', w:'92%' },
+      { lbl:'Stamina',  w:'78%' },
+      { lbl:'Focus',    w:'85%' },
+      { lbl:'Time',     w:'50%' },
+    ],
+    scene: `You're offered a gig tonight, but the venue is sketchy, pay is low, and your body is already tired from training. Mid-warm-up, something in your shoulder sends a warning. You know the difference between push-through and injury incoming.`,
+    choices: [
+      { letter:'A', text:'Take the gig and adapt. Make it work on your terms.',           end:'win'   },
+      { letter:'B', text:'Pass and create content instead. Protect your body tonight.',   end:'pivot' },
+    ]
+  },
+  dj: {
+    mode:  'dj-mode',
+    img:   'assets/dj.png',
+    eye:   'New DJ',
+    title: 'New DJ',
+    stats: [
+      { lbl:'Rhythm',       w:'80%' },
+      { lbl:'Confidence',   w:'48%' },
+      { lbl:'Adaptability', w:'74%' },
+      { lbl:'Time',         w:'40%' },
+    ],
+    scene: `You show up early for your set. The turntables are acting up and the crowd is small. This is on you now. No headliner to feed off. No hype already in the room. Just you, the booth, and whatever energy you can build from nothing.`,
+    choices: [
+      { letter:'A', text:'Work the room and build the energy from zero.',             end:'win'   },
+      { letter:'B', text:'Pivot the set, network, and make new connections tonight.', end:'pivot' },
+    ]
+  }
+};
+
+/* ── Navigation ────────────────────────────── */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById(id);
+  el.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function showRole(key) {
+  const r = ROLES[key];
+  const roleScreen = document.getElementById('screen-role');
+
+  // Color mode
+  roleScreen.className = 'screen active ' + r.mode;
+
+  // Image
+  document.getElementById('role-img').style.backgroundImage = `url('${r.img}')`;
+
+  // Text
+  document.getElementById('role-eyebrow').textContent = r.eye;
+  document.getElementById('role-title').textContent   = r.title;
+  document.getElementById('role-scene').textContent   = r.scene;
+
+  // Stats
+  document.getElementById('role-stats').innerHTML = r.stats.map(s => `
+    <div class="mini-stat">
+      <span class="lbl">${s.lbl}</span>
+      <div class="bar"><div class="fill" style="width:${s.w}"></div></div>
+    </div>
+  `).join('');
+
+  // Choices
+  document.getElementById('role-choices').innerHTML = r.choices.map(c => `
+    <button class="choice-btn" onclick="showScreen('screen-${c.end}')">
+      <span class="ch-letter">${c.letter}.</span>
+      <span class="ch-text">${c.text}</span>
+      <span class="ch-arrow">→</span>
+    </button>
+  `).join('');
+
+  showScreen('screen-role');
+}
+
+/* ── Slideshow ─────────────────────────────── */
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.slide-dots .dot');
+  let current  = 0;
+
+  function next() {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  setInterval(next, 3200);
+})();
+</script>
 </body>
 </html>
