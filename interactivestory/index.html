@@ -667,7 +667,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       <span class="t3">PLAYER</span>
       <span class="t4">Tre Tonight</span>
     </h1>
-    <p class="start-sub">One person. Four roles.<br>Every choice changes the night.</p>
+    <p class="start-sub">One person. Three roles.<br>Every choice is real.</p>
     <button class="btn-enter" onclick="showScreen('screen-select')">
       <span class="arr">»</span> ENTER <span class="arr">«</span>
     </button>
@@ -687,21 +687,21 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       <span class="strip-icon">🎭</span>
       <span class="strip-text">
         <span class="name">Tre Wright</span>
-        <span class="sub">Auditions · Self tapes</span>
+        <span class="sub">Sides memorized. Confidence: negotiable.</span>
       </span>
     </div>
     <div class="role-strip-item" onclick="showRole('dancer')">
       <span class="strip-icon">🩰</span>
       <span class="strip-text">
         <span class="name">TARZAN</span>
-        <span class="sub">Training · Performance</span>
+        <span class="sub">Body is a temple. Currently on fire.</span>
       </span>
     </div>
     <div class="role-strip-item" onclick="showRole('dj')">
       <span class="strip-icon">🎧</span>
       <span class="strip-text">
         <span class="name">DJ TARZAN</span>
-        <span class="sub">Sets · Crowd energy</span>
+        <span class="sub">Booth is ready. Room is not. Yet.</span>
       </span>
     </div>
   </div>
@@ -715,7 +715,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
   <div class="sel-header">
     <h2><span class="star">✦</span> CHOOSE YOUR PLAYER <span class="star">✦</span></h2>
-    <p>Pick a version of me. Make a choice. Live with it.</p>
+    <p>Same person. Different pressure. Pick your poison.</p>
   </div>
 
   <div class="cards-row">
@@ -725,7 +725,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       <div class="pcard-img" style="background-image:url('assets/actor.png')"></div>
       <div class="pcard-body">
         <div class="pcard-name">Tre Wright</div>
-        <div class="pcard-desc">Auditions, self tapes, last minute calls, and chasing the breakthrough.</div>
+        <div class="pcard-desc">Auditions, self tapes, last-minute calls, & the constant chase for the breakthrough that's always one submission away.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Creativity</span><div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div></div>
           <div class="stat-row"><span class="stat-lbl">Confidence</span><div class="stat-bar"><div class="stat-fill" style="width:62%"></div></div></div>
@@ -741,7 +741,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       <div class="pcard-img" style="background-image:url('assets/dancer-pole.png')"></div>
       <div class="pcard-body">
         <div class="pcard-name">TARZAN</div>
-        <div class="pcard-desc">Training, rehearsal, performance, and pushing the limits.</div>
+        <div class="pcard-desc">Pole, aerial, performance work. The body is the instrument & every gig is a negotiation between what it can do & what the ego wants to prove.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Strength</span>  <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div></div>
           <div class="stat-row"><span class="stat-lbl">Stamina</span>   <div class="stat-bar"><div class="stat-fill" style="width:78%"></div></div></div>
@@ -757,7 +757,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       <div class="pcard-img" style="background-image:url('assets/dj.png')"></div>
       <div class="pcard-body">
         <div class="pcard-name">DJ TARZAN</div>
-        <div class="pcard-desc">Sets, soundchecks, crowd energy, and finding your sound.</div>
+        <div class="pcard-desc">Reading rooms, building energy from nothing, & figuring out in real time what it means to make people feel something through music.</div>
         <div class="stat-rows">
           <div class="stat-row"><span class="stat-lbl">Rhythm</span>      <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div></div>
           <div class="stat-row"><span class="stat-lbl">Confidence</span>  <div class="stat-bar"><div class="stat-fill" style="width:48%"></div></div></div>
@@ -770,7 +770,7 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
   </div>
 
-  <div class="sel-tip">tip: your choices can lead anywhere.</div>
+  <div class="sel-tip">Warning: there is no wrong answer. There are just consequences.</div>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -794,12 +794,12 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
 
     <div class="scene-box" id="role-scene"></div>
 
-    <div class="choice-head">What do you do?</div>
+    <div class="choice-head">So. What do you do?</div>
     <div class="choices" id="role-choices"></div>
 
     <div class="goes-row">
-      <div class="goes-item">→ goes to:<span class="win-tag">Ending: Win</span></div>
-      <div class="goes-item">→ goes to:<span class="pivot-tag">Ending: Pivot</span></div>
+      <div class="goes-item">→ leads to:<span class="win-tag">you win</span></div>
+      <div class="goes-item">→ leads to:<span class="pivot-tag">you pivot</span></div>
     </div>
   </div>
 
@@ -829,9 +829,9 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
       This is momentum.
     </p>
     <div class="ending-btns">
-      <button class="btn-e btn-again" onclick="showScreen('screen-select')">Try Another Role</button>
-      <button class="btn-e btn-start" onclick="showScreen('screen-start')">Back to Start</button>
-      <a href="../index.html"><button class="btn-e btn-home">Exit to Home</button></a>
+      <button class="btn-e btn-again" onclick="showScreen('screen-select')">try another version</button>
+      <button class="btn-e btn-start" onclick="showScreen('screen-start')">back to the beginning</button>
+      <a href="../index.html"><button class="btn-e btn-home">exit to home</button></a>
     </div>
   </div>
 </section>
@@ -853,17 +853,11 @@ button { font-family: inherit; border: none; background: none; cursor: pointer; 
     <div class="ending-role-tag" id="pivot-role-tag"></div>
     <div class="ending-icon">↗️</div>
     <h2 class="ending-title">YOU PIVOT.</h2>
-    <p class="ending-body" id="pivot-body">
-      It didn't go as planned,<br>
-      but you adapted.<br>
-      New direction.<br>
-      New opportunity.<br><br>
-      That's still a win.
-    </p>
+    <p class="ending-body" id="pivot-body"></p>
     <div class="ending-btns">
-      <button class="btn-e btn-again" onclick="showScreen('screen-select')">Try Another Role</button>
-      <button class="btn-e btn-start" onclick="showScreen('screen-start')">Back to Start</button>
-      <a href="../index.html"><button class="btn-e btn-home">Exit to Home</button></a>
+      <button class="btn-e btn-again" onclick="showScreen('screen-select')">try another version</button>
+      <button class="btn-e btn-start" onclick="showScreen('screen-start')">back to the beginning</button>
+      <a href="../index.html"><button class="btn-e btn-home">exit to home</button></a>
     </div>
   </div>
 </section>
@@ -885,20 +879,20 @@ const ROLES = {
       { lbl:'Energy',     w:'45%' },
       { lbl:'Time',       w:'30%' },
     ],
-    scene: `You just got a last minute audition tomorrow. You're exhausted, your self tape is still not right, and your confidence is shaky. The callback window is tight. This is the one you've been grinding toward.`,
+    scene: `It's 11pm. You just got a notification for a last-minute audition tomorrow morning at 9am. Supporting role in a short film. Shoot starts next week.\n\nYou've been prepping a monologue for weeks. You know it cold. You've also watched your most recent self-tape back so many times it stopped looking like you. The lighting is off. Your energy reads tired. You keep meaning to reshoot it.\n\nThe industry has a way of making you doubt things you already know you're good at. But this could be something real. It almost always feels like it could be something real.`,
     choices: [
-      { letter:'A', text:'Lock in and go for the audition. Push through the fear.',    end:'win'   },
-      { letter:'B', text:'Skip the audition and focus on building your reel tonight.', end:'pivot' },
+      { letter:'A', text:`Fix the tape tonight, get some sleep, & show up tomorrow ready. The fear is just noise.`, end:'win' },
+      { letter:'B', text:`Skip the audition. Your reel needs work more than this role needs you. Invest in the long game tonight.`, end:'pivot' },
     ],
     win: {
       img:  'assets/ending-win-actor.png',
       tag:  'Tre Wright · Ending A',
-      body: `You got the callback.\nYou're doing the most embarrassing happy dance in the parking lot right now.\nOne leg up. Fist pumping. Eyes squeezed shut.\nNobody is watching but you would not stop even if they were.\n\nThis is the one.`
+      body: `You got the callback.\n\nYou're standing in the parking lot outside the building right now doing the most unhinged happy dance of your life. One leg up. Both fists. Eyes completely shut. A stranger walked past & you genuinely did not slow down.\n\nYou reshot the tape at midnight. Fixed the lighting with a lamp & a bedsheet. Showed up on three hours of sleep & gave them exactly what they needed.\n\nThe director said "that's the one" after your second take. You said "thank you." You did not scream until you got to the elevator.`
     },
     pivot: {
       img:  'assets/ending-pivot-actor.png',
       tag:  'Tre Wright · Ending B',
-      body: `You are face-down on the floor.\nSurrounded by printed sides and a cold coffee.\nOne arm reaching toward nothing in particular.\n\nThe reel is going to be incredible though.`
+      body: `The audition came & went without you. That's okay.\n\nYou spent the night reshooting your tape properly. New angle, better lighting, full energy. You sent it to three casting directors before 2am.\n\nYou're on the floor now. Printed sides everywhere. Cold coffee to your left. Ring light still on for no reason.\n\nThe reel looks incredible. That role wasn't the one. The one is coming.`
     }
   },
   dancer: {
@@ -912,20 +906,20 @@ const ROLES = {
       { lbl:'Focus',    w:'85%' },
       { lbl:'Time',     w:'50%' },
     ],
-    scene: `You're offered a gig tonight, but the venue is sketchy, pay is low, and your body is already tired from training. Mid-warm-up, something in your shoulder sends a warning. You know the difference between push-through and injury incoming.`,
+    scene: `A promoter just texted. Last-minute aerial performance tonight at a lounge in the city. Two-song set, modest pay, doors at 9.\n\nYou've already trained for three hours today. During your warm-up your shoulder gave you a signal. Not sharp, just present. The kind of thing you've learned not to ignore. You've been performing long enough to know the difference between pushing through fatigue & the kind of strain that costs you two weeks of recovery.\n\nYour body & your ego are in a full negotiation right now. The gig guilt is already setting in & you haven't even decided yet.`,
     choices: [
-      { letter:'A', text:'Take the gig and adapt. Make it work on your terms.',         end:'win'   },
-      { letter:'B', text:'Pass and create content instead. Protect your body tonight.', end:'pivot' },
+      { letter:'A', text:`Take the gig. Show up, modify what you need to, & remind the room why they called you.`, end:'win' },
+      { letter:'B', text:`Pass on it. Protect the instrument. Film some content, ice the shoulder, & perform at full capacity next time.`, end:'pivot' },
     ],
     win: {
       img:  'assets/ending-win-dancer.png',
       tag:  'TARZAN · Ending A',
-      body: `You took the bow like you've been doing this for 30 years.\nBlew a kiss to the crowd.\nCompletely unbothered.\n\nYou were tired. You were underpaid.\nYou were also the best thing that happened in that venue tonight.\nAnd you knew it.`
+      body: `The lounge was at capacity by the time you went on.\n\nYou modified the routine on the fly. Cut the shoulder-heavy transition, swapped it for something cleaner, & nobody in that room knew the difference. They saw a full performance. They saw control. They saw someone who has done this enough times to make a last-minute adjustment look completely intentional.\n\nBy the end of your second song the room went silent in the best way. Then erupted.\n\nThe promoter booked you for a monthly residency before you even stepped off the pole. Underpaid tonight. Paid properly going forward.`
     },
     pivot: {
       img:  'assets/ending-pivot-dancer.png',
       tag:  'TARZAN · Ending B',
-      body: `Ice pack duct-taped to your shoulder.\nSnack in hand.\nSomething random playing on your phone.\n\nYou protected your body, created some content,\nand honestly? This is a perfectly good Tuesday.\nNo notes.`
+      body: `You passed. Ice pack on the shoulder, snack in hand, something playing on your phone that has nothing to do with dance.\n\nYou filmed a solo piece in your living room instead. Posted it. The clip got more traction than the last three gigs you actually performed at.\n\nProtecting your body is not weakness. It is the job. Your career is long & that shoulder needs to work for years.\n\nSmart call. You already know it.`
     }
   },
   dj: {
@@ -939,20 +933,20 @@ const ROLES = {
       { lbl:'Adaptability', w:'74%' },
       { lbl:'Time',         w:'40%' },
     ],
-    scene: `You show up early for your set. The turntables are acting up and the crowd is small. This is on you now. No headliner to feed off. No hype already in the room. Just you, the booth, and whatever energy you can build from nothing.`,
+    scene: `You're booked for a Friday night set at a rooftop bar in the city. You arrive early, get set up, & realize the monitor mix is completely off. You can barely hear yourself in the booth.\n\nThe crowd trickles in slower than expected. By the time your set starts there are maybe 20 people scattered across a rooftop that fits 150. The energy is flat.\n\nThis is the moment a lot of DJs pack it in mentally. But a small crowd means every single person there is actually listening. No borrowed energy. No hype to feed off. Just you, the music, & the question of what you're going to do with that.`,
     choices: [
-      { letter:'A', text:'Work the room and build the energy from zero.',             end:'win'   },
-      { letter:'B', text:'Pivot the set, network, and make new connections tonight.', end:'pivot' },
+      { letter:'A', text:`Play like the room is at capacity. Build the energy yourself & make every person there feel like they showed up to the right place.`, end:'win' },
+      { letter:'B', text:`Read the room, pull the vibe back, & spend the night making real connections. Sometimes the networking is the whole gig.`, end:'pivot' },
     ],
     win: {
       img:  'assets/ending-win-dj.png',
       tag:  'DJ TARZAN · Ending A',
-      body: `The crowd went absolutely feral.\nYou have one eyebrow raised.\nYou are calm in the chaos.\n\nYou knew this would happen.\n(You did not know this would happen.\nBut you will never admit that.)`
+      body: `By midnight the rooftop was full.\n\nIt started with one song that made two people stop their conversation & look up. Then a third person moved closer to the booth. Then someone started recording. You didn't change what you were doing. You just kept going.\n\nWord spread through the venue faster than you expected. People came upstairs from the bar below asking what was happening up here. The promoter was on their phone the entire last hour.\n\nThey booked you for a monthly residency before your set even ended. You built a packed room out of twenty people & a broken monitor. That is the job.`
     },
     pivot: {
       img:  'assets/ending-pivot-dj.png',
       tag:  'DJ TARZAN · Ending B',
-      body: `The set was mid. The crowd was small.\nBut you left with three new numbers and two collabs in the works.\n\nYou are grinning like this was the plan all along.\nIt was not the plan.\nBut here you are.`
+      body: `The crowd stayed small. The vibe stayed chill. You leaned into it.\n\nYou pulled the energy back, played something more intimate, & the rooftop turned into the kind of night where people actually talk to each other. You stepped from behind the booth twice. Met a promoter from a larger venue downtown. Exchanged info with a photographer who shoots events you've been trying to get booked at for months.\n\nThe set wasn't the story of the night. The connections were.\n\nSome gigs build your following. Some build your network. Tonight built both.`
     }
   }
 };
