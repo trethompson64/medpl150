@@ -4,27 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tre Thompson — MEDPL 150</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 
 :root {
-  --white:      #ffffff;
-  --off-white:  #f8f7f5;
-  --light:      #eeece8;
-  --border:     #d8d5cf;
-  --text:       #111111;
-  --text-mid:   #555555;
-  --text-dim:   #999999;
-  --accent:     #111111;
-  --font:       'Century Gothic', 'AppleGothic', 'Gill Sans MT', Futura, 'Trebuchet MS', sans-serif;
-  --serif:      'Cormorant Garamond', 'Garamond', Georgia, serif;
+  --black:     #0a0a0a;
+  --white:     #ffffff;
+  --grey-100:  #f2f2f2;
+  --grey-200:  #e0e0e0;
+  --grey-400:  #999999;
+  --grey-600:  #555555;
+  --font:      'Century Gothic', 'AppleGothic', 'Gill Sans MT', Futura, 'DM Sans', sans-serif;
+  --font-dm:   'DM Sans', sans-serif;
+  --serif:     'DM Serif Display', Georgia, serif;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 16px; }
+html { font-size: 16px; scroll-behavior: smooth; }
 body {
   background: var(--white);
-  color: var(--text);
+  color: var(--black);
   font-family: var(--font);
   -webkit-font-smoothing: antialiased;
 }
@@ -33,309 +32,364 @@ img { display: block; }
 
 /* ── TOP BAR ── */
 .top-bar {
-  background: var(--text);
-  padding: 10px 48px;
+  background: var(--black);
+  padding: 12px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.top-bar .site-title {
-  font-size: 9px;
+.top-bar .site-name {
+  font-family: var(--font);
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--white);
 }
-.top-bar .course-label {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #888888;
+.top-bar .course-tag {
+  font-family: var(--font-dm);
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--grey-400);
 }
 
 /* ── NAV ── */
 nav {
   background: var(--white);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--grey-200);
   padding: 0 48px;
   display: flex;
   align-items: stretch;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 0 var(--grey-200);
 }
 nav a {
-  font-size: 9px;
+  font-family: var(--font);
+  font-size: 9.5px;
   font-weight: 400;
-  letter-spacing: 3px;
+  letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: var(--text-mid);
-  padding: 16px 20px;
+  color: var(--grey-600);
+  padding: 17px 22px;
   display: flex;
   align-items: center;
   border-bottom: 2px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  transition: color 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
-nav a:hover { color: var(--text); }
+nav a:hover { color: var(--black); }
 nav a.active {
-  color: var(--text);
-  border-bottom-color: var(--text);
+  color: var(--black);
+  border-bottom-color: var(--black);
+  font-weight: 500;
 }
 .nav-group { position: relative; }
 .nav-group > a::after {
   content: '▾';
-  font-size: 8px;
-  margin-left: 6px;
-  opacity: 0.5;
+  font-size: 9px;
+  margin-left: 5px;
+  opacity: 0.4;
 }
 .dropdown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1px);
   left: 0;
   background: var(--white);
-  border: 1px solid var(--border);
-  border-top: 2px solid var(--text);
-  min-width: 240px;
+  border: 1px solid var(--grey-200);
+  border-top: 2px solid var(--black);
+  min-width: 260px;
   z-index: 200;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .nav-group:hover .dropdown { display: block; }
 .dropdown a {
   display: block;
-  font-size: 9px;
-  letter-spacing: 2px;
+  font-family: var(--font-dm);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
   padding: 13px 20px;
-  border-bottom: 1px solid var(--light);
-  color: var(--text-mid);
+  border-bottom: 1px solid var(--grey-100);
+  color: var(--grey-600);
+  border-left: none;
 }
 .dropdown a:last-child { border-bottom: none; }
-.dropdown a:hover { background: var(--off-white); color: var(--text); }
+.dropdown a:hover {
+  background: var(--grey-100);
+  color: var(--black);
+}
 
-/* ── HERO SPLIT ── */
+/* ── HERO ── */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - 82px);
+  height: calc(100vh - 90px);
+  min-height: 500px;
 }
 
 .hero-photo {
   position: relative;
   overflow: hidden;
-  background: var(--light);
+  background: var(--grey-100);
 }
 .hero-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  transition: transform 6s ease;
 }
+.hero-photo:hover img { transform: scale(1.03); }
 .hero-photo::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to right, transparent 65%, var(--white) 100%);
+  background: linear-gradient(
+    to right,
+    transparent 60%,
+    rgba(255,255,255,0.5) 85%,
+    var(--white) 100%
+  );
   pointer-events: none;
 }
 
-.hero-content {
-  padding: 72px 56px 72px 52px;
+.hero-right {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: var(--white);
-  border-left: 1px solid var(--border);
+  justify-content: space-between;
+  padding: 48px 56px 48px 48px;
+  border-left: 1px solid var(--grey-200);
 }
 
-.hero-eyebrow {
-  font-size: 8px;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 20px;
+.hero-top {}
+
+.hero-label {
+  font-family: var(--font-dm);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--grey-400);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--grey-400);
 }
 
 .hero-name {
   font-family: var(--font);
-  font-size: clamp(36px, 4.5vw, 60px);
+  font-size: clamp(38px, 4.8vw, 64px);
   font-weight: 400;
-  letter-spacing: 10px;
+  letter-spacing: 6px;
   text-transform: uppercase;
-  color: var(--text);
-  line-height: 1.05;
-  margin-bottom: 10px;
+  color: var(--black);
+  line-height: 1.08;
+  margin-bottom: 18px;
 }
 
-.hero-role {
-  font-family: var(--serif);
-  font-size: 14px;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--text-mid);
-  letter-spacing: 1px;
+.hero-roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
   margin-bottom: 40px;
 }
+.role-tag {
+  font-family: var(--font-dm);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--grey-600);
+  border: 1px solid var(--grey-200);
+  padding: 5px 12px;
+  letter-spacing: 0.3px;
+}
 
-.rule {
-  width: 32px;
+.hero-divider {
+  width: 100%;
   height: 1px;
-  background: var(--border);
+  background: var(--grey-200);
   margin-bottom: 32px;
 }
 
-.statement-label {
-  font-size: 8px;
-  letter-spacing: 4px;
+.statement-head {
+  font-family: var(--font);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 16px;
+  color: var(--grey-400);
+  margin-bottom: 14px;
 }
 
-.statement-text {
-  font-family: var(--serif);
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text-mid);
+.statement-body {
+  font-family: var(--font-dm);
+  font-size: 13.5px;
   font-weight: 300;
-  max-width: 480px;
+  line-height: 1.85;
+  color: var(--grey-600);
 }
-.statement-text p + p { margin-top: 16px; }
+.statement-body p + p { margin-top: 14px; }
 
-/* ── HOMEWORK SECTION ── */
+/* ── HW SECTION ── */
 .hw-section {
   padding: 64px 48px 80px;
-  background: var(--off-white);
-  border-top: 1px solid var(--border);
+  background: var(--grey-100);
+  border-top: 1px solid var(--grey-200);
 }
 
-.section-heading {
-  font-size: 8px;
+.section-label {
+  font-family: var(--font);
+  font-size: 8.5px;
   font-weight: 400;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  color: var(--text-dim);
-  margin-bottom: 32px;
+  color: var(--grey-400);
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
-.section-heading::after {
+.section-label::after {
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--border);
+  background: var(--grey-200);
 }
 
 .hw-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
+  background: var(--grey-200);
+  border: 1px solid var(--grey-200);
 }
 
 .hw-card {
   background: var(--white);
-  padding: 28px 24px 24px;
+  padding: 28px 22px 22px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: background 0.2s;
-  cursor: pointer;
+  gap: 6px;
+  transition: background 0.15s;
+  position: relative;
 }
-a.hw-card:hover,
-.hw-card:hover { background: var(--off-white); }
-.hw-card.has-sub { cursor: default; }
-.hw-card.has-sub:hover { background: var(--white); }
+a.hw-card { cursor: pointer; }
+a.hw-card:hover { background: var(--grey-100); }
 
-.hw-number {
-  font-size: 8px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--text-dim);
+.hw-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--black);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
 }
-.hw-title {
+a.hw-card:hover::before { transform: scaleX(1); }
+
+.hw-num {
+  font-family: var(--font-dm);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--grey-400);
+  letter-spacing: 0.3px;
+}
+.hw-name {
+  font-family: var(--font);
   font-size: 11px;
-  letter-spacing: 1.5px;
+  font-weight: 400;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--text);
-  line-height: 1.6;
+  color: var(--black);
+  line-height: 1.55;
 }
 .hw-arrow {
   margin-top: auto;
-  padding-top: 12px;
-  font-size: 11px;
-  color: var(--border);
-  letter-spacing: 1px;
-  transition: letter-spacing 0.2s, color 0.2s;
+  padding-top: 16px;
+  font-size: 14px;
+  color: var(--grey-200);
+  transition: color 0.15s, transform 0.15s;
+  display: inline-block;
+  width: fit-content;
 }
-a.hw-card:hover .hw-arrow { letter-spacing: 4px; color: var(--text-dim); }
+a.hw-card:hover .hw-arrow {
+  color: var(--black);
+  transform: translateX(4px);
+}
 
 .hw-sublinks {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-top: 6px;
+  gap: 0;
+  margin-top: 8px;
 }
 .hw-sublink {
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--text-mid);
+  font-family: var(--font-dm);
+  font-size: 11px;
+  color: var(--grey-600);
+  padding: 8px 0;
+  border-top: 1px solid var(--grey-100);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  transition: color 0.2s;
-  padding: 4px 0;
-  border-top: 1px solid var(--light);
+  transition: color 0.15s;
 }
-.hw-sublink::after { content: '→'; font-size: 10px; margin-left: auto; }
-.hw-sublink:hover { color: var(--text); }
+.hw-sublink:hover { color: var(--black); }
+.hw-sublink::after { content: '→'; font-size: 11px; }
 
 /* ── FOOTER ── */
 footer {
-  background: var(--text);
-  padding: 22px 48px;
+  background: var(--black);
+  padding: 24px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-footer .foot-name {
+.foot-name {
+  font-family: var(--font);
   font-size: 9px;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--white);
 }
-footer .foot-course {
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #666666;
+.foot-right {
+  font-family: var(--font-dm);
+  font-size: 11px;
+  color: var(--grey-600);
 }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .top-bar, nav, .hw-section, footer { padding-left: 24px; padding-right: 24px; }
-  nav { overflow-x: auto; gap: 0; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-photo { height: 55vw; min-height: 260px; }
+@media (max-width: 800px) {
+  .top-bar, nav, .hw-section, footer { padding-left: 20px; padding-right: 20px; }
+  nav { overflow-x: auto; }
+  .hero { grid-template-columns: 1fr; height: auto; }
+  .hero-photo { height: 60vw; min-height: 240px; }
   .hero-photo img { height: 100%; }
-  .hero-photo::after { background: linear-gradient(to bottom, transparent 70%, var(--white) 100%); }
-  .hero-content { padding: 36px 24px 48px; border-left: none; border-top: 1px solid var(--border); }
+  .hero-photo::after { background: linear-gradient(to bottom, transparent 60%, var(--white) 100%); }
+  .hero-right { border-left: none; border-top: 1px solid var(--grey-200); padding: 36px 20px 48px; }
 }
 
-/* ── PAGE LOAD ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+/* ── FADE IN ── */
+@keyframes up {
+  from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-content > * { animation: fadeUp 0.6s ease both; }
-.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
-.hero-content > *:nth-child(2) { animation-delay: 0.15s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.22s; }
-.hero-content > *:nth-child(4) { animation-delay: 0.28s; }
-.hero-content > *:nth-child(5) { animation-delay: 0.33s; }
-.hero-content > *:nth-child(6) { animation-delay: 0.38s; }
-.hero-content > *:nth-child(7) { animation-delay: 0.43s; }
+.hero-right > * { animation: up 0.55s ease both; }
+.hero-right > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-right > *:nth-child(2) { animation-delay: 0.12s; }
+.hero-right > *:nth-child(3) { animation-delay: 0.18s; }
+.hero-right > *:nth-child(4) { animation-delay: 0.23s; }
+.hero-right > *:nth-child(5) { animation-delay: 0.27s; }
+.hero-right > *:nth-child(6) { animation-delay: 0.31s; }
+.hero-right > *:nth-child(7) { animation-delay: 0.35s; }
 
 </style>
 </head>
@@ -343,8 +397,8 @@ footer .foot-course {
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <span class="site-title">Tre Thompson</span>
-  <span class="course-label">MEDPL 150 &nbsp;&middot;&nbsp; Spring 2026</span>
+  <span class="site-name">Tre Thompson</span>
+  <span class="course-tag">MEDPL 150 &middot; Spring 2026</span>
 </div>
 
 <!-- NAV -->
@@ -354,12 +408,12 @@ footer .foot-course {
   <div class="nav-group">
     <a href="#">Homework</a>
     <div class="dropdown">
-      <a href="homework2-image1.html">HW 2 &nbsp;&middot;&nbsp; Cropping &amp; Resizing I</a>
-      <a href="homework2-image2.html">HW 2 &nbsp;&middot;&nbsp; Cropping &amp; Resizing II</a>
-      <a href="homework3.html">HW 3 &nbsp;&middot;&nbsp; Depth of Field &amp; Camera Raw</a>
-      <a href="homework4.html">HW 4 &nbsp;&middot;&nbsp; Photomontage</a>
-      <a href="homework5.html">HW 5 &nbsp;&middot;&nbsp; Emotive Eye &amp; Illustrated Environment</a>
-      <a href="homework6.html">HW 6 &nbsp;&middot;&nbsp; Animation</a>
+      <a href="homework2-image1.html">HW 2 &middot; Cropping &amp; Resizing I</a>
+      <a href="homework2-image2.html">HW 2 &middot; Cropping &amp; Resizing II</a>
+      <a href="homework3.html">HW 3 &middot; Depth of Field &amp; Camera Raw</a>
+      <a href="homework4.html">HW 4 &middot; Photomontage</a>
+      <a href="homework5.html">HW 5 &middot; Emotive Eye &amp; Illustrated Environment</a>
+      <a href="homework6.html">HW 6 &middot; Animation</a>
     </div>
   </div>
   <a href="interactivestory/index.html">Interactive Story</a>
@@ -367,40 +421,51 @@ footer .foot-course {
 
 <!-- HERO -->
 <div class="hero">
+
+  <!-- Photo -->
   <div class="hero-photo">
     <img
       src="images/2D90564F-4E36-4291-9BFC-4BEF0647D27D_1_105_c.jpeg"
-      alt="Tre Thompson in front of the Louvre Museum, Paris 2025"
+      alt="Tre Thompson in front of the Louvre Museum, Paris"
     >
   </div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">MEDPL 150 &nbsp;&middot;&nbsp; Media Production</p>
-    <h1 class="hero-name">Tre<br>Thompson</h1>
-    <p class="hero-role">Actor &nbsp;&middot;&nbsp; Dancer &amp; Aerialist &nbsp;&middot;&nbsp; DJ</p>
-    <div class="rule"></div>
-    <p class="statement-label">Creative Statement</p>
-    <div class="statement-text">
-      <p>My creative work lives at the intersection of performance, visual media, and storytelling. I come from a background in dance, choreography, and aerial arts — I understand communication through the body first. Movement taught me about rhythm, tension, space, and emotional pacing long before I ever worked with cameras or digital design.</p>
-      <p>As I expand into acting, producing, and directing, I carry both this physical awareness and lived perspective into every medium I use. I am especially drawn to telling Black and queer stories, with a focus on joy, complexity, and visibility.</p>
-      <p>Whether I am performing, filming, designing, or developing interactive work, I focus on how an audience feels inside a moment — turning observation into participation, and visuals into lived experience.</p>
+
+  <!-- Right side -->
+  <div class="hero-right">
+    <div class="hero-top">
+      <p class="hero-label">Visual Communication &amp; Interactive Design</p>
+      <h1 class="hero-name">Tre<br>Thompson</h1>
+      <div class="hero-roles">
+        <span class="role-tag">Actor</span>
+        <span class="role-tag">Dancer &amp; Aerialist</span>
+        <span class="role-tag">DJ</span>
+      </div>
+      <div class="hero-divider"></div>
+      <p class="statement-head">Creative Statement</p>
+      <div class="statement-body">
+        <p>My creative work lives at the intersection of performance, visual media, and storytelling. I come from a background in dance, choreography, and aerial arts — I understand communication through the body first. Movement taught me about rhythm, tension, space, and emotional pacing long before I ever worked with cameras or digital design.</p>
+        <p>As I expand into acting, producing, and directing, I carry both this physical awareness and lived perspective into every medium I use. I am especially drawn to telling Black and queer stories, with a focus on joy, complexity, and visibility.</p>
+        <p>Whether I am performing, filming, designing, or developing interactive work, I focus on how an audience feels inside a moment — turning observation into participation, and visuals into lived experience.</p>
+      </div>
     </div>
   </div>
+
 </div>
 
 <!-- HOMEWORK GRID -->
 <div class="hw-section">
-  <h2 class="section-heading">Weekly Assignments</h2>
+  <p class="section-label">Weekly Assignments</p>
   <div class="hw-grid">
 
     <a href="readings.html" class="hw-card">
-      <span class="hw-number">Readings</span>
-      <span class="hw-title">Written Responses</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Readings</span>
+      <span class="hw-name">Written Responses</span>
+      <span class="hw-arrow">→</span>
     </a>
 
-    <div class="hw-card has-sub">
-      <span class="hw-number">Homework 2</span>
-      <span class="hw-title">Cropping &amp; Resizing</span>
+    <div class="hw-card">
+      <span class="hw-num">Homework 2</span>
+      <span class="hw-name">Cropping &amp; Resizing</span>
       <div class="hw-sublinks">
         <a href="homework2-image1.html" class="hw-sublink">Image 1</a>
         <a href="homework2-image2.html" class="hw-sublink">Image 2</a>
@@ -408,33 +473,33 @@ footer .foot-course {
     </div>
 
     <a href="homework3.html" class="hw-card">
-      <span class="hw-number">Homework 3</span>
-      <span class="hw-title">Depth of Field &amp; Camera Raw</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Homework 3</span>
+      <span class="hw-name">Depth of Field &amp; Camera Raw</span>
+      <span class="hw-arrow">→</span>
     </a>
 
     <a href="homework4.html" class="hw-card">
-      <span class="hw-number">Homework 4</span>
-      <span class="hw-title">Photomontage</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Homework 4</span>
+      <span class="hw-name">Photomontage</span>
+      <span class="hw-arrow">→</span>
     </a>
 
     <a href="homework5.html" class="hw-card">
-      <span class="hw-number">Homework 5</span>
-      <span class="hw-title">Emotive Eye &amp; Illustrated Environment</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Homework 5</span>
+      <span class="hw-name">Emotive Eye &amp; Illustrated Environment</span>
+      <span class="hw-arrow">→</span>
     </a>
 
     <a href="homework6.html" class="hw-card">
-      <span class="hw-number">Homework 6</span>
-      <span class="hw-title">Animation</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Homework 6</span>
+      <span class="hw-name">Animation</span>
+      <span class="hw-arrow">→</span>
     </a>
 
     <a href="interactivestory/index.html" class="hw-card">
-      <span class="hw-number">Homework 7</span>
-      <span class="hw-title">Interactive Story</span>
-      <span class="hw-arrow">&rarr;</span>
+      <span class="hw-num">Homework 7</span>
+      <span class="hw-name">Interactive Story</span>
+      <span class="hw-arrow">→</span>
     </a>
 
   </div>
@@ -443,7 +508,7 @@ footer .foot-course {
 <!-- FOOTER -->
 <footer>
   <span class="foot-name">Tre Thompson</span>
-  <span class="foot-course">MEDPL 150 &nbsp;&middot;&nbsp; Spring 2026 &nbsp;&middot;&nbsp; CUNY Hunter College</span>
+  <span class="foot-right">MEDPL 150 &middot; Spring 2026 &middot; CUNY Hunter College</span>
 </footer>
 
 </body>
