@@ -1,73 +1,450 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tre Thompson – MEDPL 15000</title>
-  <style>
-    body {
-      font-family: "Century Gothic", Arial, sans-serif;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    p {
-      text-align: center;
-      line-height: 1.5;
-    }
-    img {
-      display: block;
-      margin: 20px auto;
-    }
-    ul {
-      list-style-position: inside;
-      padding-left: 0;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tre Thompson — MEDPL 150</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --white:      #ffffff;
+  --off-white:  #f8f7f5;
+  --light:      #eeece8;
+  --border:     #d8d5cf;
+  --text:       #111111;
+  --text-mid:   #555555;
+  --text-dim:   #999999;
+  --accent:     #111111;
+  --font:       'Century Gothic', 'AppleGothic', 'Gill Sans MT', Futura, 'Trebuchet MS', sans-serif;
+  --serif:      'Cormorant Garamond', 'Garamond', Georgia, serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+
+/* ── TOP BAR ── */
+.top-bar {
+  background: var(--text);
+  padding: 10px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.top-bar .site-title {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+.top-bar .course-label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav a {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+nav a:hover { color: var(--text); }
+nav a.active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+.nav-group { position: relative; }
+.nav-group > a::after {
+  content: '▾';
+  font-size: 8px;
+  margin-left: 6px;
+  opacity: 0.5;
+}
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--text);
+  min-width: 240px;
+  z-index: 200;
+}
+.nav-group:hover .dropdown { display: block; }
+.dropdown a {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  padding: 13px 20px;
+  border-bottom: 1px solid var(--light);
+  color: var(--text-mid);
+}
+.dropdown a:last-child { border-bottom: none; }
+.dropdown a:hover { background: var(--off-white); color: var(--text); }
+
+/* ── HERO SPLIT ── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 82px);
+}
+
+.hero-photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--light);
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.hero-photo::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, transparent 65%, var(--white) 100%);
+  pointer-events: none;
+}
+
+.hero-content {
+  padding: 72px 56px 72px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--white);
+  border-left: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 8px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+.hero-name {
+  font-family: var(--font);
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 400;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 10px;
+}
+
+.hero-role {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text-mid);
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.rule {
+  width: 32px;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 32px;
+}
+
+.statement-label {
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.statement-text {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-mid);
+  font-weight: 300;
+  max-width: 480px;
+}
+.statement-text p + p { margin-top: 16px; }
+
+/* ── HOMEWORK SECTION ── */
+.hw-section {
+  padding: 64px 48px 80px;
+  background: var(--off-white);
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.section-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.hw-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.hw-card {
+  background: var(--white);
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+a.hw-card:hover,
+.hw-card:hover { background: var(--off-white); }
+.hw-card.has-sub { cursor: default; }
+.hw-card.has-sub:hover { background: var(--white); }
+
+.hw-number {
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.hw-title {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.6;
+}
+.hw-arrow {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 11px;
+  color: var(--border);
+  letter-spacing: 1px;
+  transition: letter-spacing 0.2s, color 0.2s;
+}
+a.hw-card:hover .hw-arrow { letter-spacing: 4px; color: var(--text-dim); }
+
+.hw-sublinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+.hw-sublink {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s;
+  padding: 4px 0;
+  border-top: 1px solid var(--light);
+}
+.hw-sublink::after { content: '→'; font-size: 10px; margin-left: auto; }
+.hw-sublink:hover { color: var(--text); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--text);
+  padding: 22px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+footer .foot-name {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+footer .foot-course {
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666666;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .top-bar, nav, .hw-section, footer { padding-left: 24px; padding-right: 24px; }
+  nav { overflow-x: auto; gap: 0; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-photo { height: 55vw; min-height: 260px; }
+  .hero-photo img { height: 100%; }
+  .hero-photo::after { background: linear-gradient(to bottom, transparent 70%, var(--white) 100%); }
+  .hero-content { padding: 36px 24px 48px; border-left: none; border-top: 1px solid var(--border); }
+}
+
+/* ── PAGE LOAD ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-content > * { animation: fadeUp 0.6s ease both; }
+.hero-content > *:nth-child(1) { animation-delay: 0.05s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.15s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.22s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.28s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.33s; }
+.hero-content > *:nth-child(6) { animation-delay: 0.38s; }
+.hero-content > *:nth-child(7) { animation-delay: 0.43s; }
+
+</style>
 </head>
-
 <body>
-  <h1>Tre Thompson</h1><h2>MEDPL 15000</h2>
 
-  <a href="index2.html">
-    <img src="images/2D90564F-4E36-4291-9BFC-4BEF0647D27D_1_105_c.jpeg"
-    alt="Tre standing in front of the Louvre Museum in Paris, 2025"
-    style="max-width: 60%; height: 60%;"
-  /></a>
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span class="site-title">Tre Thompson</span>
+  <span class="course-label">MEDPL 150 &nbsp;&middot;&nbsp; Spring 2026</span>
+</div>
 
-  <h2>Creative Statement</h2>
-  <p>
-    My creative work lives at the intersection of performance, visual media, and storytelling. I come from a background in dance, choreography, and aerial arts, so I understand communication through the body first. Movement taught me about rhythm, tension, space, and emotional pacing long before I ever worked with cameras or digital design. Growing up between the South and the Midwest shaped how I see people, community, and expression, and that cultural foundation continues to inform my work.
-  </p>
-  <p>
-    As I expand into acting, producing, and directing, I carry both this physical awareness and lived perspective into every medium I use. I do not see media as flat images. I see it as lived experience shaped through timing, framing, and presence.
-  </p>
-  <p>
-    I am especially drawn to telling Black and queer stories, with a focus on joy, complexity, and visibility. I am interested in how stories move between bodies and screens, and how design and performance together shape emotion and perception. Whether I am performing, filming, designing, or developing interactive work, I focus on how an audience feels inside a moment. I think about pacing like choreography and space like staging, while acting and directing deepen my focus on character and narrative.
-  </p>
-  <p>
-    Producing helps me understand the systems that turn creative visions into real experiences. My goal is to create immersive, intentional, and human work where emotion, identity, and environment connect, turning observation into participation and visuals into lived moments.
-  </p>
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="active">Home</a>
+  <a href="readings.html">Readings</a>
+  <div class="nav-group">
+    <a href="#">Homework</a>
+    <div class="dropdown">
+      <a href="homework2-image1.html">HW 2 &nbsp;&middot;&nbsp; Cropping &amp; Resizing I</a>
+      <a href="homework2-image2.html">HW 2 &nbsp;&middot;&nbsp; Cropping &amp; Resizing II</a>
+      <a href="homework3.html">HW 3 &nbsp;&middot;&nbsp; Depth of Field &amp; Camera Raw</a>
+      <a href="homework4.html">HW 4 &nbsp;&middot;&nbsp; Photomontage</a>
+      <a href="homework5.html">HW 5 &nbsp;&middot;&nbsp; Emotive Eye &amp; Illustrated Environment</a>
+      <a href="homework6.html">HW 6 &nbsp;&middot;&nbsp; Animation</a>
+    </div>
+  </div>
+  <a href="interactivestory/index.html">Interactive Story</a>
+</nav>
 
-  <h2>Weekly Homework</h2>
-  <p>These links will redirect to separate pages as I complete each assignment.</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-photo">
+    <img
+      src="images/2D90564F-4E36-4291-9BFC-4BEF0647D27D_1_105_c.jpeg"
+      alt="Tre Thompson in front of the Louvre Museum, Paris 2025"
+    >
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">MEDPL 150 &nbsp;&middot;&nbsp; Media Production</p>
+    <h1 class="hero-name">Tre<br>Thompson</h1>
+    <p class="hero-role">Actor &nbsp;&middot;&nbsp; Dancer &amp; Aerialist &nbsp;&middot;&nbsp; DJ</p>
+    <div class="rule"></div>
+    <p class="statement-label">Creative Statement</p>
+    <div class="statement-text">
+      <p>My creative work lives at the intersection of performance, visual media, and storytelling. I come from a background in dance, choreography, and aerial arts — I understand communication through the body first. Movement taught me about rhythm, tension, space, and emotional pacing long before I ever worked with cameras or digital design.</p>
+      <p>As I expand into acting, producing, and directing, I carry both this physical awareness and lived perspective into every medium I use. I am especially drawn to telling Black and queer stories, with a focus on joy, complexity, and visibility.</p>
+      <p>Whether I am performing, filming, designing, or developing interactive work, I focus on how an audience feels inside a moment — turning observation into participation, and visuals into lived experience.</p>
+    </div>
+  </div>
+</div>
 
-  <ul>
-    <li><a href="readings.html">Readings and Written Responses</a></li>
+<!-- HOMEWORK GRID -->
+<div class="hw-section">
+  <h2 class="section-heading">Weekly Assignments</h2>
+  <div class="hw-grid">
 
-    <li>
-      Homework 2 Cropping and Resizing Images
-      <ul>
-        <li><a href="homework2-image1.html">Homework 2 Image 1</a></li>
-        <li><a href="homework2-image2.html">Homework 2 Image 2</a></li>
-      </ul>
-    </li>
+    <a href="readings.html" class="hw-card">
+      <span class="hw-number">Readings</span>
+      <span class="hw-title">Written Responses</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
 
-    <li><a href="homework3.html">Homework 3 Depth of Field and Camera Raw</a></li>
-    <li><a href="homework4.html">Homework 4 Photomontage</a></li>
-    <li><a href="homework5.html">Homework 5 Emotive Eye & Illustrated Environment</a></li>
-    <li><a href="homework6.html">Homework 6 Animation</a></li>
-    <li><a href="/medpl150/interactivestory/">Homework 7 Interactive Story</a></li>
-  </ul>
+    <div class="hw-card has-sub">
+      <span class="hw-number">Homework 2</span>
+      <span class="hw-title">Cropping &amp; Resizing</span>
+      <div class="hw-sublinks">
+        <a href="homework2-image1.html" class="hw-sublink">Image 1</a>
+        <a href="homework2-image2.html" class="hw-sublink">Image 2</a>
+      </div>
+    </div>
+
+    <a href="homework3.html" class="hw-card">
+      <span class="hw-number">Homework 3</span>
+      <span class="hw-title">Depth of Field &amp; Camera Raw</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
+
+    <a href="homework4.html" class="hw-card">
+      <span class="hw-number">Homework 4</span>
+      <span class="hw-title">Photomontage</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
+
+    <a href="homework5.html" class="hw-card">
+      <span class="hw-number">Homework 5</span>
+      <span class="hw-title">Emotive Eye &amp; Illustrated Environment</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
+
+    <a href="homework6.html" class="hw-card">
+      <span class="hw-number">Homework 6</span>
+      <span class="hw-title">Animation</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
+
+    <a href="interactivestory/index.html" class="hw-card">
+      <span class="hw-number">Homework 7</span>
+      <span class="hw-title">Interactive Story</span>
+      <span class="hw-arrow">&rarr;</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-name">Tre Thompson</span>
+  <span class="foot-course">MEDPL 150 &nbsp;&middot;&nbsp; Spring 2026 &nbsp;&middot;&nbsp; CUNY Hunter College</span>
+</footer>
+
 </body>
 </html>
