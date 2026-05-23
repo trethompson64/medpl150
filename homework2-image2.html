@@ -1810,13 +1810,13 @@ Code · HTML
 
 
 Claude is AI and can make mistakes. Please double-check responses.
-Homework2 image2 · HTML
+Homework3 · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HW 2 Image 2 — Tre Thompson MEDPL 150</title>
+<title>HW 3 — Tre Thompson MEDPL 150</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--black:#0a0a0a;--white:#ffffff;--grey-100:#f2f2f2;--grey-200:#e0e0e0;--grey-400:#999999;--grey-600:#555555;--font:'Century Gothic','AppleGothic','Gill Sans MT',Futura,sans-serif;--dm:'DM Sans',sans-serif;}
@@ -1834,21 +1834,23 @@ nav a:hover{color:var(--black);}nav a.active{color:var(--black);border-bottom-co
 .nav-group:hover .dropdown{display:block;}
 .dropdown a{display:block;font-size:12px;padding:13px 20px;border-bottom:1px solid var(--grey-100);color:var(--grey-600);}
 .dropdown a:last-child{border-bottom:none;}.dropdown a:hover{background:var(--grey-100);color:var(--black);}
-.page-wrap{max-width:860px;margin:0 auto;padding:56px 48px 80px;}
+.page-wrap{max-width:960px;margin:0 auto;padding:56px 48px 80px;}
 .page-header{margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid var(--grey-200);}
 .page-eyebrow{font-size:10px;color:var(--grey-400);letter-spacing:1px;margin-bottom:10px;}
 .page-title{font-family:var(--font);font-size:clamp(20px,3vw,30px);font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--black);}
+.section-label{font-family:var(--font);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-400);margin:40px 0 16px;display:flex;align-items:center;gap:16px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--grey-200);}
+.img-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 16px;}
+.img-grid figure{display:flex;flex-direction:column;gap:8px;}
+.img-grid img{width:100%;border:1px solid var(--grey-200);}
+.img-grid figcaption{font-size:11px;color:var(--grey-400);text-align:center;font-style:italic;}
 .page-wrap p{font-size:14px;line-height:1.9;color:var(--grey-600);margin-bottom:14px;font-weight:300;}
-.img-single{margin:36px 0;}
-.img-single img{width:100%;border:1px solid var(--grey-200);}
-.img-single figcaption{font-size:11px;color:var(--grey-400);margin-top:10px;text-align:center;font-style:italic;}
-.page-nav-links{display:flex;justify-content:space-between;margin-top:52px;padding-top:24px;border-top:1px solid var(--grey-200);}
-.page-nav-links a{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-400);transition:color .15s;}
-.page-nav-links a:hover{color:var(--black);}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-400);margin-top:52px;transition:color .15s;}
+.back-link:hover{color:var(--black);}
 footer{background:var(--black);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
 .foot-name{font-family:var(--font);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--white);}
 .foot-right{font-size:11px;color:var(--grey-600);}
-@media(max-width:768px){.top-bar,nav,footer{padding-left:20px;padding-right:20px;}nav{overflow-x:auto;}.page-wrap{padding:36px 20px 60px;}}
+@media(max-width:768px){.top-bar,nav,footer{padding-left:20px;padding-right:20px;}nav{overflow-x:auto;}.page-wrap{padding:36px 20px 60px;}.img-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -1865,8 +1867,8 @@ footer{background:var(--black);padding:24px 48px;display:flex;align-items:center
     <a href="#" class="active">Homework</a>
     <div class="dropdown">
       <a href="homework2-image1.html">HW 2 &middot; Cropping &amp; Resizing I</a>
-      <a href="homework2-image2.html" class="active">HW 2 &middot; Cropping &amp; Resizing II</a>
-      <a href="homework3.html">HW 3 &middot; Depth of Field &amp; Camera Raw</a>
+      <a href="homework2-image2.html">HW 2 &middot; Cropping &amp; Resizing II</a>
+      <a href="homework3.html" class="active">HW 3 &middot; Depth of Field &amp; Camera Raw</a>
       <a href="homework4.html">HW 4 &middot; Photomontage</a>
       <a href="homework5.html">HW 5 &middot; Emotive Eye &amp; Illustrated Environment</a>
       <a href="homework6.html">HW 6 &middot; Animation</a>
@@ -1877,22 +1879,50 @@ footer{background:var(--black);padding:24px 48px;display:flex;align-items:center
  
 <div class="page-wrap">
   <div class="page-header">
-    <p class="page-eyebrow">MEDPL 150 &middot; Homework 2 &middot; Image 2</p>
-    <h1 class="page-title">Cropping &amp; Resizing</h1>
+    <p class="page-eyebrow">MEDPL 150 &middot; Homework 3</p>
+    <h1 class="page-title">Depth of Field &amp; Camera Raw</h1>
   </div>
  
-  <figure class="img-single">
-    <img src="images/Image2.jpg" alt="Album cover wall photo edited in Photoshop">
-    <figcaption>Album cover wall — edited in Photoshop</figcaption>
-  </figure>
- 
-  <p>I chose this photo because I am a music head, and this wall is basically a visual version of my personality. Artists like Fiona Apple, TLC, Talking Heads, Interpol, and A Tribe Called Quest are not just albums to me — they are memories, taste, and culture. As a DJ I actually live with this kind of imagery and sound all the time.</p>
-  <p>Composition wise, I like the grid because it creates structure, and then the colors and faces break that structure with variety and focal points. Your eyes bounce from cover to cover, but you still feel the unity because everything belongs to the same visual world. In Photoshop, I worked to make the colors and details feel intentional so the wall reads like a curated collage, not just a snapshot. For me, it represents music, dance, and pop culture as identity, not just entertainment.</p>
- 
-  <div class="page-nav-links">
-    <a href="homework2-image1.html">← Image 1</a>
-    <a href="index.html">Back to Home →</a>
+  <p class="section-label">DSC09322</p>
+  <div class="img-grid">
+    <figure>
+      <img src="images/DSC09322_before.JPG" alt="DSC09322 before Camera Raw edit">
+      <figcaption>Before</figcaption>
+    </figure>
+    <figure>
+      <img src="images/DSC09322_after.jpg" alt="DSC09322 after Camera Raw edit">
+      <figcaption>After Camera Raw</figcaption>
+    </figure>
   </div>
+ 
+  <p class="section-label">DSC09323</p>
+  <div class="img-grid">
+    <figure>
+      <img src="images/DSC09323_before.JPG" alt="DSC09323 before Camera Raw edit">
+      <figcaption>Before</figcaption>
+    </figure>
+    <figure>
+      <img src="images/DSC09323_after.jpg" alt="DSC09323 after Camera Raw edit">
+      <figcaption>After Camera Raw</figcaption>
+    </figure>
+  </div>
+ 
+  <p class="section-label">DSC09312 — Blur Gallery</p>
+  <div class="img-grid">
+    <figure>
+      <img src="images/DSC09312.JPG" alt="DSC09312 before Blur Gallery edit">
+      <figcaption>Before</figcaption>
+    </figure>
+    <figure>
+      <img src="images/week3_deep_original_dsc09312.jpg" alt="DSC09312 after Blur Gallery edit">
+      <figcaption>After Blur Gallery — station sign kept as focal point</figcaption>
+    </figure>
+  </div>
+ 
+  <p>For these edits, I used Camera Raw on both staircase images to correct and balance the exposure based on what each image needed rather than applying the same settings to both. For DSC09322, I increased the exposure, contrast, shadows, and blacks to pull more information out of the darker areas while keeping the image readable. For DSC09323, I lowered the exposure slightly, increased contrast, adjusted shadows downward, and raised both whites and blacks to keep the handrail as the strongest visual point while maintaining detail in the surrounding stairwell.</p>
+  <p>For the 68th Street Hunter College station image, I used Blur Gallery to simulate a shallow depth of field effect while keeping the station sign as realistic and readable as possible. I kept the focal point on the sign area, then gradually increased the blur outward so the surrounding environment softened in stages rather than all at once. That made the image feel more controlled and selective, which changes how the viewer moves through the frame compared to the more documentary look of the original scene.</p>
+ 
+  <a href="index.html" class="back-link">← Back to Home</a>
 </div>
  
 <footer>
