@@ -1,68 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tre Thompson – MEDPL 15000</title>
-  <style>
-    body {
-      font-family: "Century Gothic", Arial, sans-serif;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    p {
-      text-align: center;
-      line-height: 1.5;
-    }
-    img {
-      display: block;
-      margin: 20px auto;
-    }
-    ul {
-      list-style-position: inside;
-      padding-left: 0;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readings — Tre Thompson MEDPL 150</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#0a0a0a;--white:#ffffff;--grey-100:#f2f2f2;--grey-200:#e0e0e0;
+  --grey-400:#999999;--grey-600:#555555;
+  --font:'Century Gothic','AppleGothic','Gill Sans MT',Futura,sans-serif;
+  --dm:'DM Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;}
+body{background:var(--white);color:var(--black);font-family:var(--dm);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+.top-bar{background:var(--black);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;}
+.top-bar .site-name{font-family:var(--font);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--white);}
+.top-bar .course-tag{font-size:10px;color:var(--grey-400);}
+nav{background:var(--white);border-bottom:1px solid var(--grey-200);padding:0 48px;display:flex;align-items:stretch;position:sticky;top:0;z-index:100;}
+nav a{font-family:var(--font);font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-600);padding:17px 22px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap;}
+nav a:hover{color:var(--black);}
+nav a.active{color:var(--black);border-bottom-color:var(--black);font-weight:500;}
+.nav-group{position:relative;}
+.nav-group>a::after{content:'▾';font-size:9px;margin-left:5px;opacity:.4;}
+.dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;background:var(--white);border:1px solid var(--grey-200);border-top:2px solid var(--black);min-width:260px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.nav-group:hover .dropdown{display:block;}
+.dropdown a{display:block;font-size:12px;padding:13px 20px;border-bottom:1px solid var(--grey-100);color:var(--grey-600);}
+.dropdown a:last-child{border-bottom:none;}
+.dropdown a:hover{background:var(--grey-100);color:var(--black);}
+.page-wrap{max-width:780px;margin:0 auto;padding:56px 48px 80px;}
+.page-header{margin-bottom:52px;padding-bottom:28px;border-bottom:1px solid var(--grey-200);}
+.page-eyebrow{font-size:10px;color:var(--grey-400);letter-spacing:1px;margin-bottom:10px;}
+.page-title{font-family:var(--font);font-size:clamp(20px,3vw,30px);font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--black);}
+/* Reading entry */
+.reading-entry{margin-bottom:64px;padding-bottom:64px;border-bottom:1px solid var(--grey-200);}
+.reading-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.reading-meta{display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+.reading-week{font-family:var(--font);font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-400);}
+.reading-title{font-family:var(--font);font-size:clamp(16px,2vw,22px);font-weight:400;letter-spacing:2px;text-transform:uppercase;color:var(--black);margin-bottom:6px;line-height:1.3;}
+.reading-source{font-size:12px;color:var(--grey-400);margin-bottom:28px;font-style:italic;}
+.reading-body p{font-size:14px;line-height:1.9;color:var(--grey-600);margin-bottom:16px;font-weight:300;}
+.reading-body p:last-child{margin-bottom:0;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-400);margin-top:52px;transition:color .15s;}
+.back-link:hover{color:var(--black);}
+footer{background:var(--black);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+.foot-name{font-family:var(--font);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--white);}
+.foot-right{font-size:11px;color:var(--grey-600);}
+@media(max-width:768px){.top-bar,nav,footer{padding-left:20px;padding-right:20px;}nav{overflow-x:auto;}.page-wrap{padding:36px 20px 60px;}}
+</style>
 </head>
 <body>
-  <h1>Tre Thompson</h1>
-  <h2>MEDPL 15000</h2>
-  <h3>Readings</h3>
 
-  <h2>Reflection on “In Plato's Cave” from <i>On Photography</i> by Susan Sontag.</h2>
+<div class="top-bar">
+  <span class="site-name">Tre Thompson</span>
+  <span class="course-tag">MEDPL 150 &middot; Spring 2026</span>
+</div>
 
-  <p>
-   I love still images because they let me hold onto moments that would otherwise vanish. I can take 50 photos from one night out, and each one contains a different mood, a different micro story, or something small but unforgettable, like a cat caught at the perfect angle mid-lick. I like when a photo becomes a conversation without needing an explanation, because the framing alone makes someone curious.
-  </p>
-<p>
-  After reading Sontag, I think more about how photographs get treated like pieces of reality even though they are always choices. A photo can feel like a window, like it is simply showing “what happened,” but it is still selective. Someone decided where to stand, what to include, what to crop out, and what moment counts as the moment. That is why images have so much influence. They do not just record life, they shape what we notice and what we believe is worth noticing. Sontag writes, “While a painting or a prose description can never be other than a narrowly selective interpretation, a photograph can be treated as a narrowly selective transparency.” [excerpt]
-</p>
-  <p>
-  That makes photography feel like a responsibility, not just a hobby. Like most people, I hate unflattering photos, so when I photograph people, I try to capture them with dignity. But I do not chase perfection as much as honesty. Sometimes the candid feeling adds character and tells the truth better than perfect lighting or a symmetrical pose. I think the ethical part shows up in small decisions: not turning people into props, not flattening them into stereotypes, and not using a camera to take something from someone without care.
-</p>
-  <p>
-  The part that hit me hardest is how photographs can be both comforting and painful. They freeze a moment, but they also remind you that the moment is gone. Sontag writes, “A photograph is both a pseudo‑presence and a token of absence. Like a wood fire in a room, photographs—especially those of people, of distant landscapes and faraway cities, of the vanished past.” I have experienced a lot of loss, so I cherish taking photos because it feels like saving something for the future. I never met my paternal grandparents, but seeing photographs of them living their lives, not posed, lets me feel close to them in a real way. The image becomes a kind of presence, while also making the absence undeniable, which is exactly why photos can carry so much emotion.
-    </p>
-  <p>
-  At the same time, I understand Sontag’s warning about how image culture can become compulsive, like reality needs to be confirmed by a photograph. I feel that tension constantly on social media, where images can move people emotionally while also stripping context and history away. I do not want my work to be shallow or numbing. If I were representing the world at this moment, I would focus on contrast: beauty next to exhaustion, connection next to isolation, performance next to private life, the polished image next to the truth behind it. Ultimately, I want my images to make people feel something real, not just react. My goal is for the lens to work like my eyes and the shutter to hold memory, not replace living.
-</p>
-  <h2><i>With ‘AI slop’ distorting our reality, the world is sleepwalking into disaster</i> by Nesrine Malik.</h2>
-  <p>Nesrine Malik’s article made me rethink AI, not just as a tool but as a creator of a visual world. She argues that AI images are not only fake or low quality but so common that they change how we see reality. She describes two types of images online: real ones and low-effort AI ones. The problem is not only confusion between them. The larger issue is that AI images begin to shape how we read real images, until everything feels unstable and less emotional.
+<nav>
+  <a href="index.html">Home</a>
+  <a href="readings.html" class="active">Readings</a>
+  <div class="nav-group">
+    <a href="#">Homework</a>
+    <div class="dropdown">
+      <a href="homework2-image1.html">HW 2 &middot; Cropping &amp; Resizing I</a>
+      <a href="homework2-image2.html">HW 2 &middot; Cropping &amp; Resizing II</a>
+      <a href="homework3.html">HW 3 &middot; Depth of Field &amp; Camera Raw</a>
+      <a href="homework4.html">HW 4 &middot; Photomontage</a>
+      <a href="homework5.html">HW 5 &middot; Emotive Eye &amp; Illustrated Environment</a>
+      <a href="homework6.html">HW 6 &middot; Animation</a>
+    </div>
+  </div>
+  <a href="interactivestory/index.html">Interactive Story</a>
+</nav>
 
-Malik explains that AI images spread easily because they often arrive through trusted spaces like WhatsApp. When an image comes from friends or family, we tend to trust the sender more than the content. This shows that misinformation is not just a public problem. It becomes personal inside private chats where there are fewer checks and less questioning of what is real.
+<div class="page-wrap">
+  <div class="page-header">
+    <p class="page-eyebrow">MEDPL 150 &middot; Written Responses</p>
+    <h1 class="page-title">Readings</h1>
+  </div>
 
-She also argues that AI images are not neutral. They often present fantasy versions of race, gender, and power that lean toward right-wing or authoritarian ideas. This happens because AI models learn from existing data that already carries bias. These images do not appear by accident. They recycle and smooth over old hierarchies, presenting them as natural and attractive. Political fantasies start to feel normal, even when they are manipulative.
+  <!-- READING 1 -->
+  <div class="reading-entry">
+    <div class="reading-meta"><span class="reading-week">Week 2</span></div>
+    <h2 class="reading-title">Reflection on "In Plato's Cave"</h2>
+    <p class="reading-source">from <em>On Photography</em> by Susan Sontag</p>
+    <div class="reading-body">
+      <p>I love still images because they let me hold onto moments that would otherwise vanish. I can take 50 photos from one night out, and each one contains a different mood, a different micro story, or something small but unforgettable, like a cat caught at the perfect angle mid-lick. I like when a photo becomes a conversation without needing an explanation, because the framing alone makes someone curious.</p>
+      <p>After reading Sontag, I think more about how photographs get treated like pieces of reality even though they are always choices. A photo can feel like a window, like it is simply showing "what happened," but it is still selective. Someone decided where to stand, what to include, what to crop out, and what moment counts as the moment. That is why images have so much influence. They do not just record life, they shape what we notice and what we believe is worth noticing.</p>
+      <p>That makes photography feel like a responsibility, not just a hobby. Like most people, I hate unflattering photos, so when I photograph people, I try to capture them with dignity. But I do not chase perfection as much as honesty. Sometimes the candid feeling adds character and tells the truth better than perfect lighting or a symmetrical pose. I think the ethical part shows up in small decisions: not turning people into props, not flattening them into stereotypes, and not using a camera to take something from someone without care.</p>
+      <p>The part that hit me hardest is how photographs can be both comforting and painful. They freeze a moment, but they also remind you that the moment is gone. I have experienced a lot of loss, so I cherish taking photos because it feels like saving something for the future. I never met my paternal grandparents, but seeing photographs of them living their lives, not posed, lets me feel close to them in a real way. The image becomes a kind of presence, while also making the absence undeniable, which is exactly why photos can carry so much emotion.</p>
+      <p>At the same time, I understand Sontag's warning about how image culture can become compulsive, like reality needs to be confirmed by a photograph. I feel that tension constantly on social media, where images can move people emotionally while also stripping context and history away. I do not want my work to be shallow or numbing. Ultimately, I want my images to make people feel something real, not just react. My goal is for the lens to work like my eyes and the shutter to hold memory, not replace living.</p>
+    </div>
+  </div>
 
-What stayed with me most was her point about desensitization. Our feeds place everything side by side: war, memes, arrests, AI fantasies, propaganda, and comforting images. This constant mix makes everything feel flat. Real suffering appears next to silly or fake content, and we scroll past both with the same attention. The result is not just misinformation. It is exhaustion and confusion. Images lose their emotional power because they are always competing for our eyes.
+  <!-- READING 2 -->
+  <div class="reading-entry">
+    <div class="reading-meta"><span class="reading-week">Week 7</span></div>
+    <h2 class="reading-title">Reflection on "With 'AI Slop' Distorting Our Reality, the World Is Sleepwalking Into Disaster"</h2>
+    <p class="reading-source">by Nesrine Malik</p>
+    <div class="reading-body">
+      <p>Nesrine Malik's article made me rethink AI, not just as a tool but as a creator of a visual world. She argues that AI images are not only fake or low quality but so common that they change how we see reality. The problem is not only confusion between real and artificial images. The larger issue is that AI images begin to shape how we read real images, until everything feels unstable and less emotional.</p>
+      <p>Malik explains that AI images spread easily because they often arrive through trusted spaces like WhatsApp. When an image comes from friends or family, we tend to trust the sender more than the content. This shows that misinformation is not just a public problem. It becomes personal inside private chats where there are fewer checks and less questioning of what is real.</p>
+      <p>She also argues that AI images are not neutral. They often present fantasy versions of race, gender, and power that lean toward right-wing or authoritarian ideas. This happens because AI models learn from existing data that already carries bias. These images do not appear by accident. They recycle and smooth over old hierarchies, presenting them as natural and attractive. Political fantasies start to feel normal, even when they are manipulative.</p>
+      <p>What stayed with me most was her point about desensitization. Our feeds place everything side by side: war, memes, arrests, AI fantasies, propaganda, and comforting images. This constant mix makes everything feel flat. Real suffering appears next to silly or fake content, and we scroll past both with the same attention. The result is not just misinformation. It is exhaustion and confusion. Images lose their emotional power because they are always competing for our eyes.</p>
+      <p>This connects directly to what we are learning in class about media and visual literacy. If every image is designed to grab attention for a second, then understanding how images work becomes a form of responsibility. When we create or share images, we are adding to a larger visual environment. We have to ask whether our work helps clarify reality or only adds more noise. Malik's article makes me more aware of my role in this and pushes me to be more intentional about the images I put into the world.</p>
+    </div>
+  </div>
 
-This connects directly to what we are learning in class about media and visual literacy. We talk about how framing and editing shape what people notice first in an image. Malik’s article shows what happens when that whole system loses order and trust. If every image is designed to grab attention for a second, then understanding how images work becomes a form of responsibility. When we create or share images, we are adding to a larger visual environment. We have to ask whether our work helps clarify reality or only adds more noise.
+  <!-- READING 3 -->
+  <div class="reading-entry">
+    <div class="reading-meta"><span class="reading-week">Week 13</span></div>
+    <h2 class="reading-title">Reflection on <em>Motherhood in Crisis</em></h2>
+    <p class="reading-source">Interactive Graphic Novel by Al Jazeera English, 2020</p>
+    <div class="reading-body">
+      <p>What struck me first about <em>Motherhood in Crisis</em> was the decision to tell this story as a graphic novel instead of a traditional news report. Al Jazeera could have written a feature article with statistics about maternal mortality in Sierra Leone, and people would have scrolled past it. Instead, they built something you move through. Each chapter follows a woman, a specific person with a name and a face, and the illustrated format forces you to stay with her. You cannot skim it the way you skim a headline.</p>
+      <p>The piece covers four women — Memunatu, Heela, Kadiatu, and Tetteh — each navigating pregnancy in a country where one in ten women die during childbirth. That number alone is staggering. But the graphic novel does not lead with the statistic. It leads with the people, which is exactly the right choice. By the time the numbers appear, you already care about the person the number represents. That sequencing changes everything about how the information lands.</p>
+      <p>As someone who works in performance and visual storytelling, I am drawn to how this piece uses the visual medium to carry emotional weight. The illustrations are not decorative. They are doing work. They control pacing, the way a stage director controls blocking. You see what the artist wants you to see, when they want you to see it. That level of intentionality is something I think about in my own work — how the frame, the timing, and the visual choice shape what an audience feels before they even process the information.</p>
+      <p>The mobile-first design was also a deliberate political choice. The creators knew that 80 percent of their readers would be on phones, including readers in Sierra Leone itself. That is not just a technical consideration. It is an ethical one. Designing for the people most affected by the story, instead of for a Western desktop audience, changes the work at the level of intention. It says this story is for everyone, including the people living it, not just the people observing it from a distance.</p>
+      <p>What I keep coming back to is the responsibility that comes with this kind of storytelling. When you humanize a crisis through one person's specific experience, you are making a choice about whose story gets told and how. These women are not symbols of a broken system. They are people who survived something that should not be survivable and chose to share it. That trust carries weight. The format of the graphic novel honors that weight in a way that pure data reporting rarely does.</p>
+    </div>
+  </div>
 
-I recognize this in my own social media use. My feed often jumps from serious news about violence or protest to lighthearted memes and AI-generated pictures. The emotional whiplash can feel overwhelming. Sometimes I catch myself scrolling past important stories because they look like everything else. Malik’s article makes me more aware of my role in this. It pushes me to be more careful about the images I share and to slow down before I accept something as real.</p>
-  <br><Br><Br><Br>
-  <center>
-<li><a href="index.html">
-    <p>Back to Home Page.</p></a></li>
-    </center>
+  <!-- READING 4 -->
+  <div class="reading-entry">
+    <div class="reading-meta"><span class="reading-week">Week 14</span></div>
+    <h2 class="reading-title">Reflection on "Nuclear War: The Rising Risk, and How We Stop It"</h2>
+    <p class="reading-source"><em>The New York Times</em>, Interactive, March 2024</p>
+    <div class="reading-body">
+      <p>The first thing I noticed about this piece was how the interactive format changed my relationship to the subject matter. Nuclear war is the kind of topic that usually feels abstract and distant, something that belongs to Cold War documentaries and history class. But the way the NYT built this experience, with scrolling visuals, data that reveals itself as you move through the page, and a structure that makes you feel like you are inside the argument rather than reading about it from outside, made the threat feel immediate in a way I did not expect.</p>
+      <p>The article makes the case that nuclear risk is not a relic of the past but an actively rising problem. Russia's suspension of the New START treaty, China's rapid expansion of its arsenal, North Korea's accelerating weapons program, and the erosion of arms control agreements that took decades to build are all converging at the same moment. The piece does not sensationalize this. It documents it. The data is real and the pattern it describes is genuinely alarming.</p>
+      <p>What stayed with me was the argument about how close calls have been more common than most people know. The article references historical moments where nuclear war nearly happened due to miscalculation, technical failure, or miscommunication rather than intentional aggression. That reframing matters. When you understand that the threat is not only about world leaders choosing war but about systems failing and humans misreading information under pressure, the problem becomes much harder to contain through willpower alone.</p>
+      <p>As someone who studies media and visual communication, I was also paying attention to how the piece used its format to make an argument. The interactive structure is not neutral. It was built to move the reader from passive to engaged, from aware to concerned. The visual pacing, the way text and data are revealed, the choice of what to show and when — all of that is doing rhetorical work. This piece is both journalism and design, and the two are inseparable from each other.</p>
+      <p>The section on prevention was the part I found most important. It is easy to build an audience's anxiety. It is harder to give that anxiety somewhere productive to go. The article proposes specific pathways: renewed arms control negotiations, investment in early warning systems, and the rebuilding of diplomatic channels that have been allowed to erode. Whether those paths are realistic in the current political environment is a separate question. But the piece earns the right to make those arguments because it spent the time building the case rather than just issuing a warning and walking away. That is the difference between journalism that informs and journalism that challenges you to do something with what you now know.</p>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+</div>
+
+<footer>
+  <span class="foot-name">Tre Thompson</span>
+  <span class="foot-right">MEDPL 150 &middot; Spring 2026 &middot; CUNY Hunter College</span>
+</footer>
+
 </body>
 </html>
