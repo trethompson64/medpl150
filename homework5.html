@@ -1,53 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Tre Thompson – MEDPL 15000</title>
-  <style>
-    body {
-      font-family: "Century Gothic", Arial, sans-serif;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    p {
-      text-align: center;
-      line-height: 1.5;
-    }
-    img {
-      display: block;
-      margin: 20px auto;
-    }
-    ul {
-      list-style-position: inside;
-      padding-left: 0;
-      text-align: center;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HW 5 — Tre Thompson MEDPL 150</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#ffffff;--grey-100:#f2f2f2;--grey-200:#e0e0e0;--grey-400:#999999;--grey-600:#555555;--font:'Century Gothic','AppleGothic','Gill Sans MT',Futura,sans-serif;--dm:'DM Sans',sans-serif;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{font-size:16px;}
+body{background:var(--white);color:var(--black);font-family:var(--dm);-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}
+.top-bar{background:var(--black);padding:12px 48px;display:flex;align-items:center;justify-content:space-between;}
+.top-bar .site-name{font-family:var(--font);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--white);}
+.top-bar .course-tag{font-size:10px;color:var(--grey-400);}
+nav{background:var(--white);border-bottom:1px solid var(--grey-200);padding:0 48px;display:flex;align-items:stretch;position:sticky;top:0;z-index:100;}
+nav a{font-family:var(--font);font-size:9.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--grey-600);padding:17px 22px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap;}
+nav a:hover{color:var(--black);}nav a.active{color:var(--black);border-bottom-color:var(--black);font-weight:500;}
+.nav-group{position:relative;}.nav-group>a::after{content:'▾';font-size:9px;margin-left:5px;opacity:.4;}
+.dropdown{display:none;position:absolute;top:calc(100% + 1px);left:0;background:var(--white);border:1px solid var(--grey-200);border-top:2px solid var(--black);min-width:260px;z-index:200;box-shadow:0 8px 24px rgba(0,0,0,.08);}
+.nav-group:hover .dropdown{display:block;}
+.dropdown a{display:block;font-size:12px;padding:13px 20px;border-bottom:1px solid var(--grey-100);color:var(--grey-600);}
+.dropdown a:last-child{border-bottom:none;}.dropdown a:hover{background:var(--grey-100);color:var(--black);}
+.page-wrap{max-width:860px;margin:0 auto;padding:56px 48px 80px;}
+.page-header{margin-bottom:48px;padding-bottom:28px;border-bottom:1px solid var(--grey-200);}
+.page-eyebrow{font-size:10px;color:var(--grey-400);letter-spacing:1px;margin-bottom:10px;}
+.page-title{font-family:var(--font);font-size:clamp(20px,3vw,30px);font-weight:400;letter-spacing:5px;text-transform:uppercase;color:var(--black);}
+.section-label{font-family:var(--font);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--grey-400);margin:40px 0 16px;display:flex;align-items:center;gap:16px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--grey-200);}
+/* Eye image — constrained to fit viewport */
+.eye-wrap{margin:0 0 12px;display:flex;justify-content:center;background:var(--grey-100);padding:32px;border:1px solid var(--grey-200);}
+.eye-wrap img{max-height:60vh;width:auto;max-width:100%;object-fit:contain;}
+/* Environment images side by side */
+.env-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 16px;}
+.env-grid figure{display:flex;flex-direction:column;gap:8px;}
+.env-grid img{width:100%;border:1px solid var(--grey-200);}
+.img-caption{font-size:11px;color:var(--grey-400);text-align:center;font-style:italic;margin-bottom:28px;}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey-400);margin-top:52px;transition:color .15s;}
+.back-link:hover{color:var(--black);}
+footer{background:var(--black);padding:24px 48px;display:flex;align-items:center;justify-content:space-between;}
+.foot-name{font-family:var(--font);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--white);}
+.foot-right{font-size:11px;color:var(--grey-600);}
+@media(max-width:768px){.top-bar,nav,footer{padding-left:20px;padding-right:20px;}nav{overflow-x:auto;}.page-wrap{padding:36px 20px 60px;}.env-grid{grid-template-columns:1fr;}}
+</style>
 </head>
-
 <body>
-  <main>
-      <h1>Tre Thompson</h1>
-  <h2>MEDPL 15000</h2>
-    <h3>Week 5 Emotive Eye & Illustrated Environment</h3>
-    <center>
-<figure>
-      <img src="images/emotiveeye.png" alt="Emotive Eye" style=" margin-left: auto; margin-right: auto;">
-      <figcaption class="note">Angry/Intense Anime-style eye</figcaption>
 
+<div class="top-bar">
+  <span class="site-name">Tre Thompson</span>
+  <span class="course-tag">MEDPL 150 &middot; Spring 2026</span>
+</div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="readings.html">Readings</a>
+  <div class="nav-group">
+    <a href="#" class="active">Homework</a>
+    <div class="dropdown">
+      <a href="homework2-image1.html">HW 2 &middot; Cropping &amp; Resizing I</a>
+      <a href="homework2-image2.html">HW 2 &middot; Cropping &amp; Resizing II</a>
+      <a href="homework3.html">HW 3 &middot; Depth of Field &amp; Camera Raw</a>
+      <a href="homework4.html">HW 4 &middot; Photomontage</a>
+      <a href="homework5.html" class="active">HW 5 &middot; Emotive Eye &amp; Illustrated Environment</a>
+      <a href="homework6.html">HW 6 &middot; Animation</a>
+    </div>
+  </div>
+  <a href="interactivestory/index.html">Interactive Story</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <p class="page-eyebrow">MEDPL 150 &middot; Homework 5</p>
+    <h1 class="page-title">Emotive Eye &amp; Illustrated Environment</h1>
+  </div>
+
+  <p class="section-label">Emotive Eye</p>
+  <div class="eye-wrap">
+    <img src="images/emotiveeye.png" alt="Angry, intense anime-style eye illustration">
+  </div>
+  <p class="img-caption">Angry / Intense — Anime-style eye</p>
+
+  <p class="section-label">Illustrated Environment</p>
+  <div class="env-grid">
+    <figure>
+      <img src="images/vector.png" alt="Illustrated environment vector artwork">
     </figure>
-      <center>
-<figure>
-      <center><img src="images/vector.png" alt="Illustrated Environment" style="max-width: 90
-      %; margin-left: auto; margin-right: auto;">
- <center><img src="images/LK.webp" alt="Illustrated Environment style=" max-width: 80%; height: 80%/>
-      <figcaption class="note">Illustrated Environment</figcaption></center>
+    <figure>
+      <img src="images/LK.webp" alt="Illustrated environment reference">
+    </figure>
+  </div>
+  <p class="img-caption">Illustrated Environment</p>
 
-    </figure></center>
-       <p>
-    <a href="index.html">Back to Home Page.</a>
-  </p>
-  </main>
+  <a href="index.html" class="back-link">← Back to Home</a>
+</div>
+
+<footer>
+  <span class="foot-name">Tre Thompson</span>
+  <span class="foot-right">MEDPL 150 &middot; Spring 2026 &middot; CUNY Hunter College</span>
+</footer>
+
 </body>
 </html>
